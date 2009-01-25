@@ -8,16 +8,19 @@
                 die("Forbidden");
   // end
 ?>
-<div id="adminContainer">&nbsp;
-<div id="adminLeft">
-<h3>Projects</h3>
-   <a href="?admin&adm=addproject">Add Project</a>
-   <a href="?admin&adm=listprojects">List Projects</a>
-<h3>Users</h3>
-    <a href="?admin&adm=listusers">List Users </a>
-</div>
-<div id="adminContent">
-    <?php $adm = $_GET[adm];
+<table width="100%" align="center" cellspacing="0" cellpadding="0">
+	<tr>
+		<td valign="top" id="adminLeft">
+			<h3>Projects</h3>
+   			<a href="?admin&adm=addproject">Add Project</a>
+   			<a href="?admin&adm=listprojects">List Projects</a>
+			<h3>Users</h3>
+   			<a href="?admin&adm=listusers">List Users </a>
+		</td>
+		
+		
+		<td valign="top">
+		<?php $adm = $_GET[adm];
         if($adm == "listusers"){
             
             if(is_numeric($_GET[delete])){
@@ -39,10 +42,10 @@
                 while($r = $this->db->fetch_array()){
                  ?>
                    <tr>
-                        <td><?=$r[id];?></td>
-                        <td><?=$r[username];?></td>
-                        <td><?=$r[email];?></td>
-                        <td><a href="?admin&adm=listusers&delete=<?=$r[id];?>">Delete</a></td>
+                        <td><? echo $r[id];?></td>
+                        <td><? echo $r[username];?></td>
+                        <td><? echo $r[email];?></td>
+                        <td><a href="?admin&adm=listusers&delete=<? echo $r[id];?>">Delete</a></td>
                       </tr>
                  <?php   
                 }
@@ -109,7 +112,6 @@
        ?></table><?php
     }
     ?>
-</div>
-
-</div>
- <div class="clear"></div>
+		</td>
+	</tr> </table>
+	<div class="clear"></div>

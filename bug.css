@@ -77,12 +77,11 @@ border: 1px solid #00324a;
 
 /* Admin Controls */
 #adminContainer { margin-left: 200px; margin-right: 65px; background: #ffffff; height: inherit; }
-#adminLeft { float: left; width: 150px; border-right: 1px dashed #CDCDCD; background: #ffffff;  }
-#adminLeft a { display: block; width: 100%; height: 20px; 
-color: #00324a; font-size: 14px; text-align: left; font-weight: bold;
+#adminLeft { margin-left: 10px; border-right: 1px dashed #CDCDCD;  }
+#adminLeft a { display: block; color: #00324a; font-size: 11px; text-align: left; font-weight: bold;
  text-decoration: none; padding-left: 20px; }
 #adminLeft a:hover { text-decoration: underline; }
-#adminLeft h3 { margin: 0; padding-bottom: 5px; font-size: 1.5em; text-align: left; padding-left: 5px;}
+#adminLeft h3 { margin: 0; padding-bottom: 5px; font-size: 12px; text-align: left; padding-left: 5px;}
 #adminContent {  background: #ffffff;  float: left; padding-left: 75px; width: 700px; text-align: center; font-size: 12px; }
 #adminContent .input, #adminContent .select, .loginForm {     font-size: 1.3em;
 width: 200px;
