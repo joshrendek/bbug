@@ -49,7 +49,7 @@
   if($_SESSION[userName] == "") echo "Anonymous";
         else echo $this->user->uidToName($reportedby);
 ?>
-<br/><small>IP Address: <?=$_SERVER[REMOTE_ADDR];?></small>
+<br/><small>IP Address: <? echo $_SERVER[REMOTE_ADDR];?></small>
 </td>
 </tr>
 <tr>
@@ -62,9 +62,9 @@
 </td>
 </tr>
 <tr>
-     <td><b>Submission Date:</b><br /><?=date("D, F d Y h:m:s A T");?></td>
+     <td><b>Submission Date:</b><br /><? echo date("D, F d Y h:m:s A T");?></td>
      <td><b>Project:</b>
-     <select name="project"><?=$bugView->listProjects();?></select></td>
+     <select name="project"><? echo $bugView->listProjects();?></select></td>
 </tr>
 </table>          
  <!-- tinyMCE --> 
