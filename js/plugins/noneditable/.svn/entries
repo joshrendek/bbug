@@ -1,0 +1,52 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/noneditable
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+f305bdb3dbef3b880e69c48dfa4e40f4
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+fe72f3f8b3963e5525ad2920b849e6d8
+2008-12-10T19:49:12.472994Z
+1
+josh
+

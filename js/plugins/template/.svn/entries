@@ -1,0 +1,85 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/template
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+345d085ce78d9bb1e14ab6fe4f151e44
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+template.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+d69375f0253c27fbe1f600eb8b3f3890
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+d366df72a7b56db7914d320e5f7800e0
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+js
+dir
+
+blank.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+9089127d1ef7411473edea629d4be1ce
+2008-12-10T19:49:12.472994Z
+1
+josh
+

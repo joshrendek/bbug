@@ -1,0 +1,133 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/xhtmlxtras
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+acronym.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+90610e1e803e4a2c70283fe54ead82d7
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+45f6aa312a3acc79cc32535240fac559
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+ins.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+513ab8c5155b01f641be6a7e5dbf06a3
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+3c486de46bdc4f7fddec561ebd72a6ca
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+cite.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+8e546c512946df4e064cd93ae89154d9
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+del.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+90ca26878395f58b40a728c3f3613c8d
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+js
+dir
+
+abbr.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+6902034abc4b6cef1bc1b0ef66407403
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+attributes.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+66f06ee6805756a2ede60121a9aac0b1
+2008-12-10T19:49:12.472994Z
+1
+josh
+

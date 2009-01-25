@@ -1,0 +1,52 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/iespell
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+e4e460c920b31b94153caacbf170851d
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+14eee487a8ad1527ebcb97dfc5e3b1f9
+2008-12-10T19:49:12.472994Z
+1
+josh
+

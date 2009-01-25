@@ -1,0 +1,61 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/themes/simple
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_template_src.js
+file
+
+
+
+
+2008-12-10T19:50:25.000000Z
+c51dd3fe20a277468159c3eb0ff0ed9b
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+skins
+dir
+
+img
+dir
+
+editor_template.js
+file
+
+
+
+
+2008-12-10T19:50:25.000000Z
+6fe9d290ec33fdc530c3799279874902
+2008-12-10T19:49:12.472994Z
+1
+josh
+

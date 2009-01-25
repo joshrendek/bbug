@@ -1,0 +1,76 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/advimage
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+848ad22a9baff75c57d0d7f645f361ba
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+baa82468df8d1ca9c67cd38e5b6f55c6
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+image.htm
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+9c047eccb30c3073ebdf58abb7239a35
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+img
+dir
+
+js
+dir
+

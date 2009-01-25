@@ -1,0 +1,76 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/media
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+57cd0ec150d4e94292f46901dea52436
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+80ecba8640546371f6d49ff41aca9ef7
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+media.htm
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+1f101c10c8c369f4466e95724148d454
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+img
+dir
+
+js
+dir
+

@@ -1,0 +1,52 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/compat2x
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+c3d0aefeb6c5853d66654cc63e7cd3d9
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+c1f86d8fe10caa354b3e36a33187b08a
+2008-12-10T19:49:12.472994Z
+1
+josh
+

@@ -1,0 +1,58 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/spellchecker
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+aed898ab6ffa523d8967696445630198
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+afcc0f15a4bbe09a6e2c2ec76f22bfb9
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+img
+dir
+

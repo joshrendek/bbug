@@ -1,0 +1,67 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/inlinepopups
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+0e662d64e989add7283dff26977472ab
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+template.htm
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+c01f15cd357d8dba4610c3eae6321930
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:21.000000Z
+a73b71acdee69dd54da44f4692b4dd5f
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+skins
+dir
+
