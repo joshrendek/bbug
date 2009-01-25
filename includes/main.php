@@ -43,24 +43,35 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
       </script>
         </head>
         <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"> 
-        <div id="header" width="100%"><img src="images/index_01.gif" style='float: left;'/>
-        <div style='float: right;padding-right: 30px;'><?=$this->user->loginForm();?></div>
-        </div>
-        <div class="clear"></div>
-        <div align="center" id="topWrapper">
-            <div id="topNav" style="width: 80%">
-               
-                <div id="navigation">
-                    <a href="?">Home</a>
+        
+        
+        <table align="center" width="1000" cellspacing="0" cellpadding="0">
+        	<tr>
+        		<td><img src="images/bluebug_02.gif" width="259" height="71" alt=""></td>
+        		<td id="bbtop" width="100%"> <div style='float: right;padding-right: 30px;'><?=$this->user->loginForm();?></div></td>
+       		</tr>
+       		<tr>
+       			<td colspan="2">
+       			<table width="100%" cellspacing="0" cellpadding="0" align="center">
+       			<tr>
+       			<td align="left"><img src="images/bluebug_05.gif" width="35" height="29" alt=""></td>
+       			<td id="bbbot" width="100%" valign="top" >
+       				<a href="?">Home</a>
                     <a href="?cmd=submit">Submit a Bug/Feature</a>
                     <a href="?cmd=todo">To-Do</a>
                     <a href="?cmd=bugs">Bug List</a>
                     <a href="?cmd=features">Feature List</a>
-                    <a href="?cmd=reports">Reports</a>
-                </div>
-               
-            </div>
-        </div>
+                    <a href="?cmd=reports">Reports</a></td>
+       			<td align="right"><img src="images/bluebug_08.gif" width="23" height="29" alt=""></td>
+       			</tr>
+       			</table>
+       			</td>
+       		</tr>
+        </table>
+        
+        <div class="clear"></div>
+
+        
         
           
     <?php

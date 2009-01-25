@@ -11,7 +11,7 @@
     function tableHeader(){
      ?>
      <script>$(document).ready(function() { $('#list').tablesorter(); } ); </script>
-     <table width="90%" id="list" class="tablesorter" border="0" align="center" cellpadding="0" cellspacing="0">
+     <table width="95%" id="list" class="tablesorter" border="0" align="center" cellpadding="0" cellspacing="0">
       <thead>
       <tr>
               <th>ID</th>

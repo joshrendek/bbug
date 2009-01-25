@@ -24,7 +24,11 @@ $main->headStart();
 	<div align="center">
 		
 		
-		<div id="contentArea" width="91%"><?php $main->body(); ?></div>
+		<table width="1000" align="center" cellspacing="0" cellpadding="0">
+		<tr><td align="center"><img src="images/body_01.gif"></td></tr>
+			<tr><td id="mainbody"><?php $main->body(); ?></td></tr>
+		<tr><td align="center"><img src="images/body_04.gif"></td></tr>
+		</table>
 		
 		
 	</div>

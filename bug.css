@@ -1,6 +1,6 @@
 /* CSS */
 body {
-	background-color: #00324a;
+	background-color: #e8e8e8;
     font-family: Arial, Verdana;
     font-size: 11px;
     font-weight: 0;
@@ -12,6 +12,15 @@ a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 .clear { clear: both; height: 1px; }
 h1, h2, h3 { margin:0; padding:0;}
+#bbtop { background-image: url(images/bluebug_03.gif); background-repeat: repeat-x; font-size: 10px; }
+#bbbot { background-image: url(images/bluebug_06.gif); background-repeat: repeat-x;  }
+#bbbot a { margin-left: 25px; margin-top: 14px;  color: #e8e8e8; font-size: 11px; text-decoration: none; }
+#bbbot a:hover { color: #69B7DC; }
+#bbtop input { font-size: 11px; }
+#Lusername, #Lpassword { font-size: 11px; border: 1px solid #000000; }
+
+#mainbody { background-image: url(images/body_02.gif); background-repeat: repeat-y; background-position: center center; }
+
 #header {
 	background-image: url(images/index_02.gif);
 	background-repeat: repeat-x;
