@@ -1,0 +1,52 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/visualchars
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+8fec0ef8561966c627ef5997a4b76ce6
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+4d1e295cca6cdbafa60d622a6938a03c
+2008-12-10T19:49:12.472994Z
+1
+josh
+

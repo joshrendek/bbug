@@ -1,0 +1,97 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/paste
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+cf113c3a5323ea17b16af7793a8044bf
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+pasteword.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+ce42817c01ddd922c3f1c5c9701c0036
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+d1aaa34d718e28104304e980f608e1f9
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+pastetext.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+a83b2f9eb0861b1bd5db22e57da4280d
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+js
+dir
+
+blank.htm
+file
+
+
+
+
+2008-12-10T19:50:24.000000Z
+88783f6e539184616896268bca04c25e
+2008-12-10T19:49:12.472994Z
+1
+josh
+

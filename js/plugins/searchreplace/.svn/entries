@@ -1,0 +1,73 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/searchreplace
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+3154c3cb319e9dd9c5994ae7125ad4f2
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+1246e382a76c59f1ea7f8e67ab8c3e4b
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+searchreplace.htm
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+ae3fd1271c4d96722acbe34a10e43dc2
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+js
+dir
+

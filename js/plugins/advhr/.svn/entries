@@ -1,0 +1,73 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/advhr
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+713492f5963523fcc075d873cccfdacf
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+e5186f9f8b771c729e10a70b6bc1edc3
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+js
+dir
+
+rule.htm
+file
+
+
+
+
+2008-12-10T19:50:22.000000Z
+c7f2e7569234a4ee4650ecde6d5053ac
+2008-12-10T19:49:12.472994Z
+1
+josh
+

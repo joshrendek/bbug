@@ -1,0 +1,73 @@
+8
+
+dir
+25
+svn://bluescripts.net/bluebug/js/plugins/fullpage
+svn://bluescripts.net/bluebug
+
+
+
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cd22b38c-b65d-0410-a68f-fbf8c6f3c1a1
+
+editor_plugin.js
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+fcfce1ec9976dfbaad25d0dafecdaf06
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+langs
+dir
+
+editor_plugin_src.js
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+4762525b09f340963149c44b967c6d3d
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+fullpage.htm
+file
+
+
+
+
+2008-12-10T19:50:23.000000Z
+a035917ad7ab45825b1aa44ceebc084c
+2008-12-10T19:49:12.472994Z
+1
+josh
+
+css
+dir
+
+js
+dir
+
