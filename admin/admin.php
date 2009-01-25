@@ -19,7 +19,7 @@
 		</td>
 		
 		
-		<td valign="top">
+		<td valign="top" id="adminContent">
 		<?php $adm = $_GET[adm];
         if($adm == "listusers"){
             
