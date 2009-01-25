@@ -61,7 +61,26 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     <a href="?cmd=todo">To-Do</a>
                     <a href="?cmd=bugs">Bug List</a>
                     <a href="?cmd=features">Feature List</a>
-                    <a href="?cmd=reports">Reports</a></td>
+                    <a href="?cmd=reports">Reports</a>
+                    
+                    <div style="float: right">
+           <form name="refiner" id="refiner" method="POST" action=""><select name="specialrefiner" onchange="document.refiner.submit();">
+           
+           <option value="">Show only....</option>
+           <option value="">-- Projects --</option>
+           <?php 
+             $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
+             while($r = mysql_fetch_array($tpr))
+                echo '<option value="'.$r['id'].'">'.$r['name'].'</option>';
+           ?>
+           <option value="">-- Other --</option>
+           <option value="open">Open Tickets</option>
+           <option value="closed">Closed Tickets</option>
+           <option value="all">Show All</option>
+           </select>
+     </div>
+                    
+                    </td>
        			<td align="right"><img src="images/bluebug_08.gif" width="23" height="29" alt=""></td>
        			</tr>
        			</table>

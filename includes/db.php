@@ -78,7 +78,7 @@ class Database {
        $pages = ceil($results/$per);
        //if($pages==null) $pages = 1;
        
-       $links = "<b>Page:</b> ";
+       $links = "<div id='paginate'><b>Page:</b> ";
        $plinkpos = strpos($_SERVER[QUERY_STRING], 'page=');
        if($_SERVER[QUERY_STRING] == "cmd=bugs") $base = "?cmd=bugs&";
        elseif($_SERVER[QUERY_STRING] == "cmd=features") $base = "?cmd=features&";
@@ -90,6 +90,7 @@ class Database {
         $links .= "<a href='".$base."page=$i' class='paginator'>$i</a>";
        
        echo $links;
+       echo '</div>';
        //echo $this->num_results(); 
     }
     
