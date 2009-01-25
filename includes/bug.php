@@ -128,23 +128,8 @@
             
      ?>
      </div>
-     <div style="float: right">
-           <form name="refiner" method="POST" action=""><select name="specialrefiner" onchange="document.refiner.submit();">
-           
-           <option value="">Show only....</option>
-           <option value="">-- Projects --</option>
-           <?php 
-             $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
-             while($r = mysql_fetch_array($tpr))
-                echo '<option value="'.$r['id'].'">'.$r['name'].'</option>';
-           ?>
-           <option value="">-- Other --</option>
-           <option value="open">Open Tickets</option>
-           <option value="closed">Closed Tickets</option>
-           <option value="all">Show All</option>
-           </select>
      </div>
-     </div>
+     
      <div style="clear:both;"/></div>
      <?php 
      
