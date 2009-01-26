@@ -10,7 +10,7 @@
 ?>
 <table width="100%" align="center" cellspacing="0" cellpadding="0">
 	<tr>
-		<td valign="top" id="adminLeft">
+		<td valign="top" id="adminLeft" width="150">
 			<h3>Projects</h3>
    			<a href="?admin&adm=addproject">Add Project</a>
    			<a href="?admin&adm=listprojects">List Projects</a>

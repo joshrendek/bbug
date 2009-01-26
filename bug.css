@@ -7,15 +7,16 @@ body {
     margin: 0;
     padding: 0;
     color: #222222; 
-    
+    text-align: center;
 }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-.clear { clear: both; height: 1px; }
+.clear { clear: both; height: 0px; }
 h1, h2, h3 { margin:0; padding:0;}
-#bbtop { background-image: url(images/bluebug_03.gif); background-repeat: repeat-x; font-size: 10px; }
+#headtable { text-align: center; }
+#bbtop { background-image: url(images/bluebug_03.gif); background-repeat: repeat-x; font-size: 10px; height: 71px; }
 #bbbot { background-image: url(images/bluebug_06.gif); background-repeat: repeat-x;  }
-#bbbot a { margin-left: 25px; margin-top: 14px;  color: #e8e8e8; font-size: 11px; text-decoration: none; }
+#bbbot a { margin-left: 25px;  margin-top: 10px;  color: #e8e8e8; font-size: 11px; text-decoration: none; }
 #bbbot a:hover { color: #69B7DC; }
 #bbtop input { font-size: 11px; }
 #Lusername, #Lpassword { font-size: 11px; border: 1px solid #000000; }
@@ -82,7 +83,7 @@ border: 1px solid #00324a;
  text-decoration: none; padding-left: 20px; }
 #adminLeft a:hover { text-decoration: underline; }
 #adminLeft h3 { margin: 0; padding-bottom: 5px; font-size: 12px; text-align: left; padding-left: 5px;}
-#adminContent {  background: #ffffff;  float: left; padding-left: 75px; width: 700px; text-align: center; font-size: 12px; }
+#adminContent {  background: #ffffff;  padding-left: 75px; text-align: center; font-size: 12px; }
 #adminContent .input, #adminContent .select, .loginForm {     font-size: 1.3em;
 width: 200px;
 border: 1px solid #00324a;
@@ -165,4 +166,4 @@ a.paginator:hover { border-bottom: 2px solid #00324a; color: #69b7dc; }
 #paginate a { color: #222222; }
 #paginate a:hover { color: #69B7DC; font-weight: bold; }
 
-#refiner { margin: 0; padding: 0; margin-top: -15px;}
+#refiner { margin: 0; padding: 0; margin-top: -15px; }
