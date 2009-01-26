@@ -35,8 +35,7 @@
 <link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet">
 <div id="submitForm" align="">
 <form name="" method="POST" action="">
-<div style="width: 400px;">
-<table width="100%" cellspacing="2">
+<table width="500" cellspacing="2" align="center">
 <tr>
 <td>
 <b>Subject:</b>
@@ -70,7 +69,7 @@
  <!-- tinyMCE --> 
  <!-- mainly for FF , ie seems to cache better -->
  <center><div id="editor"><img src="loader.gif" id="loader" /> <br /><b>Editor loading...</b> </div> </center>
-</div><table align="center" width="600"><tr><td>
+</div><table align="center" width="600" ><tr><td>
 <link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet"> 
 <textarea name="report" id="report" style="width: 600px; " cols="80" rows="20"><? /*htmlspecialchars("<p><b>Summary:</b>
 
@@ -89,8 +88,8 @@
 $(document).ready(function() { $('#editor').hide(); $('#report').wysiwyg(); } );</script>  </td></tr></table>
 <div class="clear"></div>
 
-</div>
 <div id="working"><img src="loader.gif" id="loader" /> <b>Working...</b></div> 
-<input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';">
+<div align="center">
+<input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';"></div>
 </form><?php  ?>
 <?php }else { echo "The administrator has required registration to submit bugs."; } ?>

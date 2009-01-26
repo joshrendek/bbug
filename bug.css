@@ -1,8 +1,7 @@
 /* CSS */
 body {
 	background-color: #e8e8e8;
-    font-family: Arial, Verdana;
-    font-size: 11px;
+ 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;    font-size: 11px;
     font-weight: 0;
     margin: 0;
     padding: 0;
@@ -16,7 +15,7 @@ h1, h2, h3 { margin:0; padding:0;}
 #headtable { text-align: center; }
 #bbtop { background-image: url(images/bluebug_03.gif); background-repeat: repeat-x; font-size: 10px; height: 71px; }
 #bbbot { background-image: url(images/bluebug_06.gif); background-repeat: repeat-x;  }
-#bbbot a { margin-left: 25px;  margin-top: 10px;  color: #e8e8e8; font-size: 11px; text-decoration: none; }
+#bbbot a { margin-left: 25px;  margin-top: 10px;  color: #e8e8e8; font-size: 11px; font-weight: bold; text-decoration: none; }
 #bbbot a:hover { color: #69B7DC; }
 #bbtop input { font-size: 11px; }
 #Lusername, #Lpassword { font-size: 11px; border: 1px solid #000000; }
@@ -67,10 +66,9 @@ h1, h2, h3 { margin:0; padding:0;}
 }
 #submitForm input, #submitForm select, .loginForm {
 width: 200px;
-border: 1px solid #00324a;
 }
 #submitForm textarea { width: 400px; height: 200px; font-family: Verdana, Arial; font-size: 10px; }
-#submitForm input:focus { background-color: #efefef; }
+#submitForm input:focus {  }
 #submitForm table { font-size: 12px; }
 #submitForm small { font-size: 9px; color: #666666; }
 
@@ -104,13 +102,13 @@ border-right: 2px solid #323232;   */
 
 #messageShow { background-color: #00324a; border: 1px solid #00324a; color: #ffffff; font-size: .8em; display: none;}
 
-#list thead th { border-bottom: 2px groove #999999; background-color: #CDCDCD; font-size: 12px; padding: 3px; cursor: n-resize;  }
+#list thead th { border-bottom: 2px groove #999999; font-size: 14px; padding: 3px; cursor: n-resize;   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-.L1 { background-color: #EFEFEF; }
+.L1 { background-color: #EFEFFF; }
 .L2 { background-color: #ffffff; }
-.L1 td, .L2 td { border-bottom: 1px dotted #CDCDCD; font-size: 11px; padding: 2px; }
-.L1 a, .L2 a { color: #2e4f5f; border-bottom: 1px dotted #777777; text-decoration: none; }
-.L1 a:hover, .L2 a:hover { color: #2f8dba; border-bottom: 1px dotted #000000; text-decoration: none; }  
+.L1 td, .L2 td { border-bottom: 1px dotted #CDCDCD; font-size: 11px; padding: 2px; padding-top: 10px; padding-bottom: 10px; }
+.L1 a, .L2 a { color: #2e4f5f; font-weight: bold; font-size: 12px;   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; text-decoration: none; }
+.L1 a:hover, .L2 a:hover { color: #2f8dba; text-decoration: none; }  
 
 .pri1 , .pri1 a{ background-color: #FFCCFF; font-weight: bold; text-decoration: underline;  color: red;  }
 .pri2, .pri2 a { background-color: #CCCCFF; color: blue;  }
@@ -152,7 +150,7 @@ a.paginator:hover { border-bottom: 2px solid #00324a; color: #69b7dc; }
 .installer, .register { width: 150px; font-size: 10px; color: #333333; border: 1px solid #00324a; font-family: Verdana, Arial; }
 .copyright, .copyright a { color: #222222; }
 
-#submitForm { background: #ffffff; width: 90%; border-top: 1px solid #444444; }
+#submitForm {  }
 
 #subnav { color: white; }
 #subnav a { color: #999999; }
