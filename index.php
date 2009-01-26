@@ -25,7 +25,7 @@ $main->headStart();
 		
 		
 		<table width="1000" align="center" id="main_bb" cellspacing="0" cellpadding="0">
-		<tr><td align="center"><img src="images/body_01.gif"></td></tr>
+		<tr><td align="center"><img src="images/body_01.gif" height="27" width="1000"></td></tr>
 			<tr><td id="mainbody"><?php $main->body(); ?></td></tr>
 		<tr><td align="center"><img src="images/body_04.gif"></td></tr>
 		</table>
