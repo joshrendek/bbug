@@ -3,7 +3,7 @@
   
   defined('__bbug') or die();
   
-  define("BBPATH", "http://".substr($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI], 0, strrpos($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI],"?") ) );
+  define("BBPATH", "http://".substr($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI], 0, strrpos($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI],"/") ) );
   
   class Main { 
    var $db = 0;
