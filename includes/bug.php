@@ -14,11 +14,11 @@
      <table width="95%" id="list" class="tablesorter" border="0" align="center" cellpadding="0" cellspacing="0">
       <thead>
       <tr>
-              <th>ID</th>
+              <th>#</th>
               <th>Type</th> 
               <th width="45%">Title</th>
               <th width="25">Status</th>
-              <th>By</th>
+              <?php /* taken out to reduce clutter <th>By</th> */ ?>
               <th>Project</th>
               <th width="25">Priority</th>
               <th width="150">Started</th>
@@ -88,12 +88,13 @@
                                 echo "Open";
                                 else
                                     echo "Closed"; ?></td>
-        <td><?php
-        
+       <?php
+        /* <td> Taken out to reduce clutter 
         if($r[by] == 0) echo "Anonymous";
         else echo $this->user->uidToName($r[by]);
-        
-        ?></td>
+        </td>
+        */
+        ?>
         <td align="center"><?php echo $this->ProjectIDtoName($r['project']); ?></td>
         <td align="center" class="pri<?php echo $r[priority];?>" id="<?php echo $r[priority];?>"><?php echo $this->adminPriHover($r[id], $r[priority]);?></td>
         <td align="center"><?php echo $this->the_date($r[started]);?></td>
