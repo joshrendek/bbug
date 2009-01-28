@@ -9,14 +9,14 @@ include('includes/bug.php');
 include('includes/user.php');
 include('includes/todo.php');
 
-define('REGISTERED', $config[registered]);
-$mydb = new Database($db['host'], $db['user'], $db['pass'], $db[db], '', 20);
+define('REGISTERED', $config["registered"]);
+$mydb = new Database($db['host'], $db['user'], $db['pass'], $db['db'], '', 20);
 $mydb->NewConnection();
 
 $main = new Main($mydb);    
 $main->headStart();
 
-
+ 
 ?>
 
 	
