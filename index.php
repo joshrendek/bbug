@@ -16,7 +16,6 @@ $mydb->NewConnection();
 $main = new Main($mydb);    
 $main->headStart();
 
- 
 ?>
 
 	
