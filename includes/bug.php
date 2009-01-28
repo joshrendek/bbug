@@ -42,8 +42,11 @@
     
     /* create the bug list */
     function bblist($type=-1){
-        
-        if($_POST['specialrefiner']){
+        if(isset($_GET["page"]))
+        	$page = $_GET["page"];
+        else
+        	$page = "";
+        if(isset($_POST['specialrefiner'])){
          $_SESSION['esql'] = "";
          $srf = $_POST['specialrefiner'];
          if($srf == "open")
@@ -55,8 +58,11 @@
          elseif(is_numeric($srf))
             $_SESSION['esql'] = "AND `project`='".$this->db->clean($srf, '', 'num')."'";
         }
+        
+        if(!isset($_SESSION['esql']))
+        	$_SESSION['esql'] = "";
         /* Handle paging */
-        if(is_numeric($_GET[page])){
+        if(is_numeric(isset($_GET["page"]))){
             $page = intval($_GET[page]);
             $lower = ($page * $this->db->pagenums)-$this->db->pagenums;
             $limit = "LIMIT $lower,".$this->db->pagenums;
@@ -80,11 +86,11 @@
           $cssclass = "L1";
        ?>   
          <tr class="<?php echo $cssclass;?>">
-        <td align="center"><?php echo $r[id];?></td>
-        <td width="16" align="center"><div style='position: relative;'><img src="<?php echo $this->img($r[type]);?>" style='' />
-        <?php if($r[status] == 0){ ?><img src="images/cancel.png" style='position: absolute; float: left; margin-left: -16px; opacity: .7;' /><?php } ?></div></td>
-        <td><a href="?cmd=view&id=<?php echo $r[id];?>"><?php if($r[title] == "") echo "[No Title]"; else echo $r[title];?></a></td>
-        <td align="center"><?php if($r[status] == 1)
+        <td align="center"><?php echo $r["id"];?></td>
+        <td width="16" align="center"><div style='position: relative;'><img src="<?php echo $this->img($r["type"]);?>" style='' />
+        <?php if($r["status"] == 0){ ?><img src="images/cancel.png" style='position: absolute; float: left; margin-left: -16px; opacity: .7;' /><?php } ?></div></td>
+        <td><a href="?cmd=view&id=<?php echo $r["id"];?>"><?php if($r["title"] == "") echo "[No Title]"; else echo $r["title"];?></a></td>
+        <td align="center"><?php if($r["status"] == 1)
                                 echo "Open";
                                 else
                                     echo "Closed"; ?></td>
@@ -96,13 +102,13 @@
         */
         ?>
         <td align="center"><?php echo $this->ProjectIDtoName($r['project']); ?></td>
-        <td align="center" class="pri<?php echo $r[priority];?>" id="<?php echo $r[priority];?>"><?php echo $this->adminPriHover($r[id], $r[priority]);?></td>
-        <td align="center"><?php echo $this->the_date($r[started]);?></td>
+        <td align="center" class="pri<?php echo $r["priority"];?>" id="<?php echo $r["priority"];?>"><?php echo $this->adminPriHover($r["id"], $r["priority"]);?></td>
+        <td align="center"><?php echo $this->the_date($r["started"]);?></td>
         <td><?php
         
-        if($r[finished] == 0)
+        if($r["finished"] == 0)
             echo "Never";
-        else echo $this->the_date($r[finished]);
+        else echo $this->the_date($r["finished"]);
         
         ?></td>
         </tr><?php 
@@ -111,7 +117,7 @@
          
        </tbody>
        <?php 
-       if(REGISTERED == 0 || $_SESSION[userName]){
+       if(REGISTERED == 0 || $_SESSION["userName"]){
        $this->quickadd(); } ?>
        </table>
        
@@ -154,9 +160,9 @@ $("#<?php echo $id;?>PriB").toggle(function () {$('#<?php echo $id;?>Pri').fadeI
         });
       </script>
       <div id="<?php echo $id;?>Pri" class="PriMenu" style='position: absolute; z-index: 99; border: 1px dotted #ababab; margin-left: -5px; background-color: #EFEFEF; width: 50px; margin-top: -55px;'>
-      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '1', id: '<?php echo $id;?>', username: '<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('High');">High</a>
-      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '2', id: '<?php echo $id;?>', username: '<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('Moderate');">Moderate</a>
-      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '3', id: '<?php echo $id;?>', username: '<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('Low');">Low</a></div> 
+      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '1', id: '<?php echo $id;?>', username: '<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('High');">High</a>
+      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '2', id: '<?php echo $id;?>', username: '<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('Moderate');">Moderate</a>
+      <a href="javascript:;" onclick="$.post('ajax.php', { changepri: '3', id: '<?php echo $id;?>', username: '<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>' } ); $('#<?php echo $id;?>PriB').empty(); $('#<?php echo $id;?>PriB').append('Low');">Low</a></div> 
       <?php } ?>
     
     
@@ -169,7 +175,7 @@ $("#<?php echo $id;?>PriB").toggle(function () {$('#<?php echo $id;?>Pri').fadeI
     if($num == 1) return  "images/feature.png";
   }  
    function quickadd(){
-       if($_POST[quickadd]){
+       if(isset($_POST["quickadd"])){
         $bugData = array('id' => 'null', 'project' => $_POST[project], 'parent' => 0, 'title' => strip_tags($_POST[title]), 
         'report' => $_POST[report], 'status' => '1', 'by' => $reportedby, 'priority' => 3, 
         'type' => $_POST[type], 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '');

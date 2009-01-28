@@ -79,13 +79,14 @@ class Database {
        //if($pages==null) $pages = 1;
        
        $links = "<div id='paginate'><b>Page:</b> ";
-       $plinkpos = strpos($_SERVER[QUERY_STRING], 'page=');
-       if($_SERVER[QUERY_STRING] == "cmd=bugs") $base = "?cmd=bugs&";
-       elseif($_SERVER[QUERY_STRING] == "cmd=features") $base = "?cmd=features&";
+       $plinkpos = strpos($_SERVER["QUERY_STRING"], 'page=');
+       if($_SERVER["QUERY_STRING"] == "cmd=bugs") $base = "?cmd=bugs&";
+       elseif($_SERVER["QUERY_STRING"] == "cmd=features") $base = "?cmd=features&";
        else $base = "?";
-       if(strlen($_SERVER[QUERY_STRING]) > 0) $base .= "".substr($_SERVER[QUERY_STRING], 0, $plinkpos);
+       if(strlen($_SERVER["QUERY_STRING"]) > 0) $base .= "".substr($_SERVER["QUERY_STRING"], 0, $plinkpos);
        
        else $base = "?";
+       
        for($i = 1; $i <= $pages; $i++)
         $links .= "<a href='".$base."page=$i' class='paginator'>$i</a>";
        
