@@ -102,8 +102,8 @@
    
             // Construct email
             //$unique_sep = md5(uniqid(time()));
-
-            $headers .= "From: $from\n";
+			
+            $headers = "From: $from\n";
             
             
             // find user ID's email

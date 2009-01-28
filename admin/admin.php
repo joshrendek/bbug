@@ -1,8 +1,8 @@
 <?php
   defined('__bbug') or die();
   // security check
-                $userName = $_SESSION[userName];
-                $passWord = $_SESSION[passWord];
+                $userName = $_SESSION["userName"];
+                $passWord = $_SESSION["passWord"];
                 $adminCheck = $this->db->first("SELECT `acl` FROM `users` WHERE `username`='$userName' AND `password`='".md5($passWord)."';");
                 if($adminCheck != 0 || $adminCheck == "")
                 die("Forbidden");
@@ -20,11 +20,15 @@
 		
 		
 		<td valign="top" id="adminContent">
-		<?php $adm = $_GET[adm];
+		<?php 
+		if(isset($_GET["adm"]))
+			$adm = $_GET["adm"];
+		else
+			$adm = "";
         if($adm == "listusers"){
             
-            if(is_numeric($_GET[delete])){
-              $uid = $this->db->clean($_GET[delete], '', '');
+            if(isset($_GET["delete"])){
+              $uid = (int)$_GET["delete"];
               $this->db->del('users', "id='$uid'", 1); 
               $this->message("<center><h3>User Deleted.</h3></center>");  
             }
@@ -42,10 +46,10 @@
                 while($r = $this->db->fetch_array()){
                  ?>
                    <tr>
-                        <td><? echo $r[id];?></td>
-                        <td><? echo $r[username];?></td>
-                        <td><? echo $r[email];?></td>
-                        <td><a href="?admin&adm=listusers&delete=<? echo $r[id];?>">Delete</a></td>
+                        <td><? echo $r["id"];?></td>
+                        <td><? echo $r["username"];?></td>
+                        <td><? echo $r["email"];?></td>
+                        <td><a href="?admin&adm=listusers&delete=<? echo $r["id"];?>">Delete</a></td>
                       </tr>
                  <?php   
                 }
@@ -54,9 +58,9 @@
               </table>
             <?php
         }elseif($adm == "addproject"){
-            if($_POST[add_project]){
+            if(isset($_POST["add_project"])){
                 // name mini description
-                $bugData = array('id' => 'null', 'name' => $_POST[name], 'mini' => $_POST[mini], 'description' => $_POST[description]);
+                $bugData = array('id' => 'null', 'name' => $_POST["name"], 'mini' => $_POST["mini"], 'description' => $_POST["description"]);
                 $this->db->query_insert('projects', $bugData);
                 $this->message("<center><h3>Project addded.</h3></center>");
             }
@@ -94,8 +98,8 @@
        <td><b>Options</b></td>
        </tr>
        <?
-       if(is_numeric($_GET[delete])){
-        $delid = (int)$_GET[delete];
+       if(isset($_GET["delete"])){
+        $delid = (int)$_GET["delete"];
         $this->db->del("projects", "id='$delid'", 1);
         $this->db->del("list", "project='$delid'");
         $this->message("Project deleted.");
