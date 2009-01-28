@@ -9,10 +9,10 @@
     }
     
     function todolists(){
-        if($_POST['create'])
+        if(isset($_POST['create']))
             $this->createList($_POST['title'], $_POST['project']);
             
-        if($_POST['delete']){
+        if(isset($_POST['delete'])){
         	$tdid = $this->db->clean($_POST['delete'], '', '');
         	$this->db->del("todo_main", "`id`='$tdid'", 1);
         	$this->db->del("todo_list", "`tid`='$tdid'");
@@ -43,10 +43,10 @@
           <script>
             function addTo(id){
             <?php
-            	$addthis = "<div id='item_{$t[id]}'> <input type='checkbox' name=''  onclick='finish($t[id]);''> ";
+            	$addthis = "<div id='item_".$r["id"]."'> <input type='checkbox' name=''  onclick='finish(".$r["id"].");''> ";
             ?>
              var itemvalue = document.getElementById('title'+id).value;
-             $.post('ajax.php', { addtodo: '1', id: id, item: document.getElementById('title'+id).value,  username: '<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>' }, function(data){  $('#project'+id).append("<div id='item_"+data+"'><input type='checkbox' name='' onclick='finish("+data+");'> " + itemvalue + '</div>');  } );
+             $.post('ajax.php', { addtodo: '1', id: id, item: document.getElementById('title'+id).value,  username: '<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>' }, function(data){  $('#project'+id).append("<div id='item_"+data+"'><input type='checkbox' name='' onclick='finish("+data+");'> " + itemvalue + '</div>');  } );
              document.getElementById('title'+id).value='';   
             
              
@@ -54,7 +54,7 @@
             
             function finish(id){
             	$('#item_'+id).fadeOut();
-            	$.post('ajax.php', { markfinish: '1', id: id, username: '<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>' } );
+            	$.post('ajax.php', { markfinish: '1', id: id, username: '<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>' } );
             }
             
             function deletetd(id){
@@ -87,9 +87,9 @@
                <?php } ?>
                <div id="project<?php echo $r['id']; ?>" style='margin-left: 65px;'>
                <?php
-               	$tdlist = $this->db->query("SELECT * FROM todo_list WHERE tid='{$r[id]}' AND status='0' ORDER BY id DESC");
+               	$tdlist = $this->db->query("SELECT * FROM todo_list WHERE tid='".$r["id"]."' AND status='0' ORDER BY id DESC");
                	while($t = mysql_fetch_array($tdlist)){
-               		echo "<div id='item_{$t[id]}'>";
+               		echo "<div id='item_".$t["id"]."'>";
                		if(REGISTERED == 0 || $this->user->getUID() > 0)
 	               		echo "<input type='checkbox' name=''  onclick='finish($t[id]);'> ";
                		echo $t['content']."</div>";

@@ -1,19 +1,19 @@
 <?php
   defined('__bbug') or die();
   // thanks to PHPChess.com for the suggestions
-  $viewurl = substr($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI], 0, strrpos($_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI],"?") );
+  $viewurl = substr($_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"], 0, strrpos($_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"],"?") );
   //echo $viewurl;
   if((REGISTERED == 1 && $this->user->getUID() != 0) || !REGISTERED){      // if registered is set in config, check, otherwise if its not set its still public / havnt added line
   $reportedby = $this->user->getUID();
   $bugView = new View($this->db); 
-  if($_POST[submitReport]){
+  if(isset($_POST["submitReport"])){
   
-  if($_POST[type] == "bug")
+  if($_POST["type"] == "bug")
     $type = 0;
   else
     $type = 1;
-  $bugData = array('id' => 'null', 'project' => $_POST[project], 'parent' => 0, 'title' => strip_tags($_POST[subject]), 
-        'report' => $_POST[report], 'status' => '1', 'by' => $reportedby, 'priority' => $_POST[priority], 
+  $bugData = array('id' => 'null', 'project' => $_POST["project"], 'parent' => 0, 'title' => strip_tags($_POST["subject"]), 
+        'report' => $_POST["report"], 'status' => '1', 'by' => $reportedby, 'priority' => $_POST["priority"], 
         'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '');
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Report submitted.</h3></center>");
@@ -26,7 +26,7 @@
   
   Please visit http://".$viewurl."?cmd=view&id=$LASTID to view it.";
   while($r = $this->db->fetch_array()){
-    $this->user->mailUser($r[id], 'BlueBug', $message, 'New Bug/Feature in BlueBug');
+    $this->user->mailUser($r["id"], 'BlueBug', $message, 'New Bug/Feature in BlueBug');
   }
   
   }
@@ -45,10 +45,10 @@
 <td><b>Reported by: </b></td>
 <td>
 <?php
-  if($_SESSION[userName] == "") echo "Anonymous";
+  if($_SESSION["userName"] == "") echo "Anonymous";
         else echo $this->user->uidToName($reportedby);
 ?>
-<br/><small>IP Address: <? echo $_SERVER[REMOTE_ADDR];?></small>
+<br/><small>IP Address: <? echo $_SERVER["REMOTE_ADDR"];?></small>
 </td>
 </tr>
 <tr>

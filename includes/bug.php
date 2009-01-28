@@ -254,7 +254,7 @@ class View extends Bugs {
          	?>
          	<script>
          		function saveTitle(){
-         			$.post('ajax.php', {titlechange: document.getElementById('title').value, tickid: '<?php echo $r[id];?>', username:'<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>'}, function(data){ alert(data); } );
+         			$.post('ajax.php', {titlechange: document.getElementById('title').value, tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); } );
          			
          			$('#tickettitle').replaceWith("<span id='ticketitle'>" + document.getElementById('title').value + "</span>");	
          		}
@@ -271,37 +271,37 @@ class View extends Bugs {
                         <td  colspan="2" align="right" style='background-color: #e8e8e8;'><?php if($this->user->adminCheck()) { ?><a href="javascript:;" id="assignlink">Assign</a>
                         <span id="assign"><select id="assignto" name="assign">                                  
                         <?php $qq = $this->db->query("SELECT * FROM users ORDER BY username;"); 
-                        while($rr = $this->db->fetch_array($qq)){ ?> <option value="<?php echo $rr[id];?>"><?php echo $rr[username];?> (<?php echo $rr[email];?>)</option> <?php } ?>
-                        </select> <a href="javascript:;" onclick="$('#assto').empty();$.post('ajax.php', {assignto: document.getElementById('assignto').value, tickid: '<?php echo $r[id];?>', username:'<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>'}, function(data){ $('#assto').append(data); });" style='padding: 0;'><small>Change</small></a></span>
+                        while($rr = $this->db->fetch_array($qq)){ ?> <option value="<?php echo $rr["id"];?>"><?php echo $rr["username"];?> (<?php echo $rr["email"];?>)</option> <?php } ?>
+                        </select> <a href="javascript:;" onclick="$('#assto').empty();$.post('ajax.php', {assignto: document.getElementById('assignto').value, tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ $('#assto').append(data); });" style='padding: 0;'><small>Change</small></a></span>
                         <?php //if($r[status] == 1) { ?>
-                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Closed');$.post('ajax.php', {closeticket: 'true', tickid: '<?php echo $r[id];?>', username:'<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>', by: '<?php echo $r[by];?>'}, function(data){ alert(data); });">Close Ticket</a>
+                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Closed');$.post('ajax.php', {closeticket: 'true', tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>', by: '<?php echo $r["by"];?>'}, function(data){ alert(data); });">Close Ticket</a>
                         <?php //}else{ ?>
-                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Open');$.post('ajax.php', {openticket: 'true', tickid: '<?php echo $r[id];?>', username:'<?php echo $_SESSION[userName];?>', password: '<?php echo $_SESSION[passWord];?>'}, function(data){ alert(data); });">Open Ticket</a>
+                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Open');$.post('ajax.php', {openticket: 'true', tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); });">Open Ticket</a>
                         <?php //} ?>
                         <?php }else { echo '&nbsp;'; } ?> </td>
                    </tr>
                    <tr>
                    <td width="150" align="center" valign="top">
-                        <img src="<?php echo $this->img($r[type]);?>" style='' /> <hr style='border: 0;'>
-                       <b> Assigned to:</b> <br /><span id="assto"><?php echo $this->user->assigned($r[assigned]);?></span>  <hr  style='border: 0;'>
-                        <b>Priority:</b> <br /><?php echo $this->adminPriHover($r[id], $r[priority]);?>  <br>     <br>
-                        <b>Status</b>: <span id="status"><?php if($r[status] == 1) echo "Open";
+                        <img src="<?php echo $this->img($r["type"]);?>" style='' /> <hr style='border: 0;'>
+                       <b> Assigned to:</b> <br /><span id="assto"><?php echo $this->user->assigned($r["assigned"]);?></span>  <hr  style='border: 0;'>
+                        <b>Priority:</b> <br /><?php echo $this->adminPriHover($r["id"], $r["priority"]);?>  <br>     <br>
+                        <b>Status</b>: <span id="status"><?php if($r["status"] == 1) echo "Open";
                                         else  echo "Closed"; ?></span>
                    </td>
                         <td valign="top">
                         
                         <h3 style='border-bottom: 1px solid #ACACAC;'>
                        <?php if($this->user->adminCheck() ){ ?> <img src="images/page_edit.png" onclick="editTitle();"> <?php } ?>
-                        <span id="tickettitle"><?php echo $r[title];?> </span>
-                        <small>by <?php echo $this->user->uidToName($r[by]);?></small></h3>
-                        <?php echo stripslashes( $this->make_clickable($r[report]) );?>
+                        <span id="tickettitle"><?php echo $r["title"];?> </span>
+                        <small>by <?php echo $this->user->uidToName($r["by"]);?></small></h3>
+                        <?php echo stripslashes( $this->make_clickable($r["report"]) );?>
                         
                         </td>
                         
                    </tr>
                    <tr>
                         <td colspan="2" align="right"style='background-color: #e8e8e8;'>
-                        <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r[id];?>" style='color: red;'>Delete</a><?php } ?>
+                        <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r["id"];?>" style='color: red;'>Delete</a><?php } ?>
                         <a href="javascript:;" id="reply">Reply</a></td>
                    </tr>
            </table>
@@ -327,15 +327,15 @@ class View extends Bugs {
                    </td>
                         <td valign="top">
                         
-                        <h3 style='border-bottom: 1px solid #ACACAC;'><?php echo $r[title];?> <small>by <?php echo $this->user->uidToName($r[by]);?></small></h3>
-                        <?php echo stripslashes($this->make_clickable($r[report]));?>
+                        <h3 style='border-bottom: 1px solid #ACACAC;'><?php echo $r["title"];?> <small>by <?php echo $this->user->uidToName($r["by"]);?></small></h3>
+                        <?php echo stripslashes($this->make_clickable($r["report"]));?>
                         
                         </td>
                         
                    </tr>
                    <tr>
                         <td colspan="2" align="right"style='background-color: #e8e8e8;'>
-                        <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r[id];?>" style='color: red;'>Delete</a><?php } ?></td>
+                        <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r["id"];?>" style='color: red;'>Delete</a><?php } ?></td>
                    </tr>
            </table>
          <?php   
@@ -358,10 +358,10 @@ class View extends Bugs {
             <td><b>Reported by: </b></td>
             <td>
             <?php
-              if($_SESSION[userName] == "") echo "Anonymous";
+              if($_SESSION["userName"] == "") echo "Anonymous";
                     else echo $this->user->uidToName($this->user->getUID());
             ?>
-            <br/><small>IP Address: <?php echo $_SERVER[REMOTE_ADDR];?></small>
+            <br/><small>IP Address: <?php echo $_SERVER["REMOTE_ADDR"];?></small>
             </td>
             </tr>
             <tr>
@@ -398,7 +398,7 @@ class View extends Bugs {
       $percent = @round(($finished/$unfinished), 2);
       $backgroundpos = 300-($percent * 100 * 3);
    ?>
-     <h2><?php echo $r[name];?> <small><?php echo $r[mini];?></small></h2>
+     <h2><?php echo $r["name"];?> <small><?php echo $r["mini"];?></small></h2>
      <div>
         <h4>Bugs</h4>
         <table cellspacing="0" cellpadding="0" border="0" width="300">
