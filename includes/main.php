@@ -97,8 +97,10 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
       }
       
    function body(){
-   
-    $cmd = $_GET["cmd"];
+   	if(isset($_GET["cmd"]))
+    	$cmd = $_GET["cmd"];
+    else
+    	$cmd = "";
     
     if($cmd == "submit")
         include('submit.php');
@@ -124,9 +126,9 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
         include('view.php');
     elseif($cmd == "todo")
         include('todo.php');
-    elseif(isset($_GET[admin]))
+    elseif(isset($_GET["admin"]))
      include('admin/admin.php');       
-    elseif($cmd == "" && $_GET[admin] == ""){
+    elseif($cmd == "" && !isset($_GET["admin"])){
      include('home.php');
     }
   }   
