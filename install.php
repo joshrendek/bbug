@@ -120,7 +120,7 @@ $mydb->query($todoLSQL);
 if(strlen($mydb->errorno) == 0)
 echo "<b>ToDo_List table created....</b><br/>";
 
-$projModSQL = "ALTER TABLE `projects` ADD `client_exec` VARCHAR( 255 ) NOT NULL ;";
+$projModSQL = "ALTER TABLE `projects` ADD `client_exec` VARCHAR( 255 ) NOT NULL ;ALTER TABLE `projects` ADD `github` VARCHAR( 255 ) NOT NULL ;";
 $mydb->query($projModSQL);
 
 

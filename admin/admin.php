@@ -90,7 +90,7 @@
         
     elseif($adm == "listprojects"){
     	if(isset($_POST["projid"])){
-    		$this->db->query_update('projects', array('client_exec' => $_POST["client_exec"]), 'id="'.$_POST["projid"].'"');
+    		$this->db->query_update('projects', array('client_exec' => $_POST["client_exec"], 'github' => $_POST["github"]), 'id="'.$_POST["projid"].'"');
     		$this->message("Client Exec URL updated.");
     	}
      ?>
@@ -122,8 +122,10 @@
         echo "<tr>";
         echo "<td colspan='3'>";
         echo "Client Exec URL: <input type='text' name='client_exec' class='input' style='width: 300px;' value='".$r["client_exec"]."' />";
+        echo "<br>GitHub Commit URL: <input type='text' name='github' class='input' style='width: 300px;' value='".$r["github"]."' />";
+
         echo "</td></tr>";
-        echo "</form>";
+        echo "<input type='submit' name='update' value='update' /></form>";
        }   
         
        ?></table><?php
