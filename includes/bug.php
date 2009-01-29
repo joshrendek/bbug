@@ -46,9 +46,9 @@
         	$page = $_GET["page"];
         else
         	$page = "";
-        if(isset($_POST['specialrefiner'])){
+        if(isset($_GET['specialrefiner'])){
          $_SESSION['esql'] = "";
-         $srf = $_POST['specialrefiner'];
+         $srf = $_GET['specialrefiner'];
          if($srf == "open")
              $_SESSION['esql'] = "AND `status`='1'";
          elseif($srf == "closed")
@@ -62,8 +62,12 @@
         if(!isset($_SESSION['esql']))
         	$_SESSION['esql'] = "";
         /* Handle paging */
-        if(is_numeric(isset($_GET["page"]))){
-            $page = intval($_GET[page]);
+      /*  if( isset($_GET["page"]) )
+        	$_GET["page"]=$_GET["page"];
+        else
+        	$_GET["page"] = 1; */
+        if(isset($_GET["page"])){
+            $page = ($_GET["page"]);
             $lower = ($page * $this->db->pagenums)-$this->db->pagenums;
             $limit = "LIMIT $lower,".$this->db->pagenums;
         }else $limit = "LIMIT 0,".$this->db->pagenums;

@@ -58,23 +58,43 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
        			<tr>
        			<td align="left"><img src="images/bluebug_05.gif" width="35" height="29" alt=""></td>
        			<td id="bbbot" width="100%" valign="top" >
-       				<a href="?">Home</a>
-                    <a href="?cmd=submit">New Ticket</a>
-                    <a href="?cmd=todo">To-Do</a>
-                    <a href="?cmd=bugs">Bug List</a>
-                    <a href="?cmd=features">Feature List</a>
-                    <a href="?cmd=reports">Reports</a>
-                    
-                    <a href="?" onclick="ticketMenu();">Tickets</a>
+       			<table width="60%" style="padding-top: 6px;" align="left" cellspacing="0" cellpadding="0">
+       				<tr>
+       				<td><a href="?">Home</a></td>
+                    <td><a href="?cmd=submit">New Ticket</a></td>
+                    <?php
+                    $counter = array();
+                    $counter['open'] = $this->db->first("SELECT count(*) FROM list WHERE `status`='1' AND `parent`='0' ");
+                    $counter['closed'] = $this->db->first("SELECT count(*) FROM list WHERE `status`='0' AND `parent`='0' ");
+                    $counter['feature'] = $this->db->first("SELECT count(*) FROM list WHERE `type`='1' AND `parent`='0' ");
+                    $counter['bug'] = $this->db->first("SELECT count(*) FROM list WHERE `type`='0' AND `parent`='0' ");
+                    ?>
+                    <td><a href="?">Tickets</a> <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETS" onclick=""><img src="images/arrow.png" border="0" width="10" height="10" /></a>
                     <div id="ticketMenu" style="display: none; visibility: hidden;">
-                    	<a href="#">Test</a>
-                    	<a href="#">Test</a>
-                    	<a href="#">Test</a>
-                    	<a href="#">Test</a>
+                    	<div id="headings-small">Ticket List</div>
+                    	<a href="?cmd=bugs">Bug List (<?php echo $counter['bug']; ?>)</a>
+                    	<a href="?cmd=features">Feature Lis (<?php echo $counter['feature']; ?>)</a>
+                    	<a href="?specialrefiner=all">Show All (<?php echo $counter['open']+$counter['closed']; ?>)</a>
+                    	<a href="?specialrefiner=open">Show Open (<?php echo $counter['open']; ?>)</a>
+                    	<a href="?specialrefiner=closed">Show Closed (<?php echo $counter['closed']; ?>)</a>
+                    	<div id="headings-small">Projects</div>
+                    	<?php 
+             
+             $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
+             while($r = mysql_fetch_array($tpr))
+                echo '<a href="?specialrefiner='.$r['id'].'">'.$r['name'].'</a>';
+           ?>
                     </div>
+                    </td>
+                    <td><a href="?cmd=todo">To-Do</a></td>
+                    <td><a href="?cmd=reports">Reports</a></td>
+                    
+                    
+                    </tr>
+                  </table>
                     
                     <div style="float: right">
-           <form name="refiner" id="refiner" method="POST" action=""><select name="specialrefiner" onchange="document.refiner.submit();">
+           <form name="refiner" id="refiner" method="GET" action=""><select name="specialrefiner" onchange="document.refiner.submit();">
            
            <option value="">Show only....</option>
            <option value="">-- Projects --</option>
