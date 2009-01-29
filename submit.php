@@ -35,61 +35,67 @@
 <link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet">
 <div id="submitForm" align="">
 <form name="" method="POST" action="">
-<table width="500" cellspacing="2" align="center">
+<table width="90%" cellspacing="2" align="center">
 <tr>
-<td>
-<b>Subject:</b>
-</td><td>
-<input type="input" name="subject" />
-</td><tr>
-<td><b>Reported by: </b></td>
-<td>
-<?php
-  if($_SESSION["userName"] == "") echo "Anonymous";
-        else echo $this->user->uidToName($reportedby);
-?>
-<br/><small>IP Address: <? echo $_SERVER["REMOTE_ADDR"];?></small>
+<td colspan="2"><div id="headings">Create New A New Ticket</div>
 </td>
 </tr>
+
 <tr>
-<td width=""><b>Type: </b> 
-<select name="type" ><option value="bug">Bug</option><option value="feature">Feature</option></select>
-</td><td>  <b>Priority:</b> 
-<select name="priority"  ><option value="3">Low</option>
-<option value="2">Moderate</option>
-<option value="1">Urgent</option></select>
+	<td valign="top" width="50%">
+		<table width="100%" cellspacing="2" align="center">
+			<tr>
+				<td><label for="subject" >Title</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" class="input" name="subject" /></td>
+			</tr>
+			<tr>
+				<td><label for="subject" >Description of feature/issue</label></td>
+			</tr>
+			<tr>
+				<td><textarea name="report" class="textarea"></textarea></td>
+			</tr>
+		</table>
+	</td>
+	<td valign="top" width="50%">
+		<table width="100%" cellspacing="2" align="center">
+			<tr>
+				<td><label for="type">Ticket Type</label></td>
+			</tr>
+			<tr>
+				<td><select class="select" name="type" ><option value="bug">Bug</option><option value="feature">Feature</option></select>
 </td>
+			</tr>
+			<tr>
+				<td><label for="priority">Priority</label></td>
+			</tr>
+			<tr>
+				<td><select class="select" name="priority"  ><option value="3">Low</option>
+					<option value="2">Moderate</option>
+					<option value="1">Urgent</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="project">Project</label></td>
+			</tr>
+			<tr>
+				<td><select name="project" class="select"><? echo $bugView->listProjects();?></select></td>
+			</tr>
+		</table>
+	</td>
 </tr>
+
 <tr>
-     <td><b>Submission Date:</b><br /><? echo date("D, F d Y h:m:s A T");?></td>
-     <td><b>Project:</b>
-     <select name="project"><? echo $bugView->listProjects();?></select></td>
+	<td colspan="2">
+	<div id="working"><img src="loader.gif" id="loader" /> <b>Working...</b></div> 
+<div align="left">
+<input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';"> or <a href="?">cancel</a></div>
+
+	</td>
 </tr>
-</table>          
- <!-- tinyMCE --> 
- <!-- mainly for FF , ie seems to cache better -->
- <center><div id="editor"><img src="loader.gif" id="loader" /> <br /><b>Editor loading...</b> </div> </center>
-</div><table align="center" width="600" ><tr><td>
-<link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet"> 
-<textarea name="report" id="report" style="width: 600px; " cols="80" rows="20"><? /*htmlspecialchars("<p><b>Summary:</b>
 
-<br>
-<br>
-<br>
- </p>  
-<p><b>Steps to Reproduce:</b> <br><br><br>    </p>  
- 
-<p><b>Additional Information:</b><br><br><br>  </p>
- 
-"); */?>
+</table>
 
-
-</textarea><script>
-$(document).ready(function() { $('#editor').hide(); $('#report').wysiwyg(); } );</script>  </td></tr></table>
-<div class="clear"></div>
-
-<div id="working"><img src="loader.gif" id="loader" /> <b>Working...</b></div> 
-<div align="center">
-<input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';"></div>
 </form><?php  ?>
 <?php }else { echo "The administrator has required registration to submit bugs."; } ?>

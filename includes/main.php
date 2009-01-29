@@ -57,7 +57,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
        			<td align="left"><img src="images/bluebug_05.gif" width="35" height="29" alt=""></td>
        			<td id="bbbot" width="100%" valign="top" >
        				<a href="?">Home</a>
-                    <a href="?cmd=submit">Submit a Bug/Feature</a>
+                    <a href="?cmd=submit">New Ticket</a>
                     <a href="?cmd=todo">To-Do</a>
                     <a href="?cmd=bugs">Bug List</a>
                     <a href="?cmd=features">Feature List</a>
@@ -136,7 +136,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   function message($string){
     echo "
     <center>
-    <div id='messageShow' style='display: none; width: 400px;'>$string</div><script>$('#messageShow').fadeIn('1000'); setTimeout(\"$('#messageShow').fadeTo('slow', .33)\", 1000);  setTimeout(\"$('#messageShow').fadeOut()\", 3000); </script></center>";
+    <div id='messageShow' style='display: none; width: 90%;' width='90%'>$string</div><script>$('#messageShow').fadeIn('1000'); setTimeout(\"$('#messageShow').fadeTo('slow', .33)\", 1000);  setTimeout(\"$('#messageShow').fadeOut()\", 3000); </script></center>";
   }
   
   
