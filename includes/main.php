@@ -58,7 +58,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
        			<tr>
        			<td align="left"><img src="images/bluebug_05.gif" width="35" height="29" alt=""></td>
        			<td id="bbbot" width="100%" valign="top" >
-       			<table width="60%" style="padding-top: 6px;" align="left" cellspacing="0" cellpadding="0">
+       			<table width="55%" style="padding-top: 6px;" align="left" cellspacing="0" cellpadding="0">
        				<tr>
        				<td><a href="?">Home</a></td>
                     <td><a href="?cmd=submit">New Ticket</a></td>
@@ -88,7 +88,21 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     </td>
                     <td><a href="?cmd=todo">To-Do</a></td>
                     <td><a href="?cmd=reports">Reports</a></td>
-                    
+                    <?php if(isset($_GET["id"]) && $_GET["cmd"]=="view" && $this->user->adminCheck()){ ?>
+                    <td></td>
+                    <td><a href="?cmd=view&id=<?php echo $_GET["id"]; ?>">This Ticket</a> <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETMENUUNI" onclick=""><img src="images/arrow.png" border="0" width="10" height="10" /></a>
+                    <div id="ticketMenuUniq" style="display: none; visibility: hidden;">
+                    	<div id="headings-small">Ticket Options</div>
+                    	<a href="javascript:;" onclick="$('#status').empty();$('#status').append('Open');$.post('ajax.php', {openticket: 'true', tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); });">Open</a>
+                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Closed');$.post('ajax.php', {closeticket: 'true', tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>', by: '<?php echo $r["by"];?>'}, function(data){ alert(data); });">Close</a>
+                        <div id="headings-small">Assign To</div>
+                        <span id="assign" align="center"><select id="assignto" style="font-size: 10px;" name="assign">                                  
+                        <?php $qq = $this->db->query("SELECT * FROM users ORDER BY username;"); 
+                        while($rr = $this->db->fetch_array($qq)){ ?> <option value="<?php echo $rr["id"];?>"><?php echo $rr["username"];?> (<?php echo $rr["email"];?>)</option> <?php } ?>
+                        </select> <a href="javascript:;" onclick="$('#assto').empty();$.post('ajax.php', {assignto: document.getElementById('assignto').value, tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ $('#assto').append(data); });" >Change</a></span>
+                        
+                    </td>
+                    <?php } ?>
                     
                     </tr>
                   </table>

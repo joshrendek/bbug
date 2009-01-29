@@ -89,6 +89,10 @@
         }
         
     elseif($adm == "listprojects"){
+    	if(isset($_POST["projid"])){
+    		$this->db->query_update('projects', array('client_exec' => $_POST["client_exec"]), 'id="'.$_POST["projid"].'"');
+    		$this->message("Client Exec URL updated.");
+    	}
      ?>
        <h3>Projects</h3>
        <table width="500" align="center" cellspacing="2" cellpadding="2" border="0">
@@ -106,11 +110,20 @@
        }
        $this->db->query("SELECT * FROM projects ORDER BY name, mini ASC");
        while($r = $this->db->fetch_array()){
+        ?>
+        <form name="" method="POST" action="">
+        <input type="hidden" name="projid" value="<?php echo $r["id"]; ?>" />
+        <?php
         echo "<tr>";
         echo "<td>$r[name]</td>";
         echo "<td>$r[mini]</td>";
         echo "<td><a href='?admin&adm=listprojects&delete=$r[id]'>Delete</a></td>";
         echo "</tr>";
+        echo "<tr>";
+        echo "<td colspan='3'>";
+        echo "Client Exec URL: <input type='text' name='client_exec' class='input' style='width: 300px;' value='".$r["client_exec"]."' />";
+        echo "</td></tr>";
+        echo "</form>";
        }   
         
        ?></table><?php

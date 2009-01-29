@@ -82,13 +82,8 @@ h1, h2, h3 { margin:0; padding:0;}
 #adminLeft a:hover { text-decoration: underline; }
 #adminLeft h3 { margin: 0; padding-bottom: 5px; font-size: 12px; text-align: left; padding-left: 5px;}
 #adminContent {  background: #ffffff;  padding-left: 75px; text-align: center; font-size: 12px; }
-#adminContent .input, #adminContent .select, .loginForm {     font-size: 1.3em;
-width: 200px;
-border: 1px solid #00324a;
-}
+
 #adminContent h3 { font-size: 1em; }
-#adminContent textarea { width: 400px; height: 200px; font-size: 10px; color: #666666; border: 1px solid #00324a;  }
-#adminContent .input:focus { background-color: #efefef; }
 #adminContent table * { font-size: 12px; }
 #adminContent small { font-size: 9px; color: #666666; }
                                
@@ -188,6 +183,14 @@ input[type='text'] {
 
 label { font-size: 12px; color: #555555;  font-weight: bold;   }
 
-#ticketMenu { position: absolute; margin-left: 23px; margin-top: 8px; z-index: 999;  border: 1px solid #222222; width: 200px; background-color: #FFFFFF;}
-#ticketMenu a { display: block; width: 190px; margin: 0; padding: 5px; color: #2e4f5f; border-bottom: 1px dotted #cdcdcd;  }
-#ticketMenu a:hover { background-color: #ffffff; }
+#ticketMenu, #ticketMenuUniq { position: absolute; margin-left: 23px; margin-top: 8px; z-index: 999;  border: 1px solid #222222; width: 200px; background-color: #FFFFFF;}
+#ticketMenu a, #ticketMenuUniq a{ display: block; width: 190px; margin: 0; padding: 5px; color: #2e4f5f; border-bottom: 1px dotted #cdcdcd;  }
+#ticketMenu a:hover, #ticketMenuUniq a:hover { background-color: #ffffff; }
+
+#subheading { font-size: 11px; color: #3a667b;  }
+.dark { color: #111111 !important; } 
+
+#reportarea { font-size: 14px; }
+
+.alt1 { background-color: #efefff; padding: 5px; width: 998px; border-bottom: 1px solid #cdcdcd; }
+.alt2 { background-color: #ffffff; padding: 5px; width: 998px; border-bottom: 1px solid #cdcdcd; }

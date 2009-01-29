@@ -7,4 +7,12 @@ $(document).ready(function () {
 		function () {
 			$('#ticketMenu').hide();
 		});
+	$("#TICKETMENUUNI").toggle(
+		function () {
+			$('#ticketMenuUniq').css("visibility", "visible");
+			$('#ticketMenuUniq').css("display", "block");
+		},
+		function () {
+			$('#ticketMenuUniq').hide();
+		});
  });
