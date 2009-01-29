@@ -247,7 +247,7 @@ class View extends Bugs {
         {
             $text = ereg_replace('([[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/])', '<a target=\"_new\" href="\\1">\\1</a>', $text);
         }
-        $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1">\[CE-Ticket \#$1\]</a>', $text);
+        $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', $text);
         //'#\[wow\](.*?)\[/wow\]#is'
         return($text);
     }
