@@ -13,7 +13,7 @@
   else
     $type = 1;
   $bugData = array('id' => 'null', 'project' => $_POST["project"], 'parent' => 0, 'title' => strip_tags($_POST["subject"]), 
-        'report' => $_POST["report"], 'status' => '1', 'by' => $reportedby, 'priority' => $_POST["priority"], 
+        'report' => nl2br($_POST["report"]), 'status' => '1', 'by' => $reportedby, 'priority' => $_POST["priority"], 
         'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '');
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Report submitted.</h3></center>");

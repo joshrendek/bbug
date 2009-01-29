@@ -240,13 +240,15 @@ class View extends Bugs {
     }
     
     /* from php.net or something -- regex to convert text-links to html links */
-    function make_clickable($text)
+    function make_clickable($text, $ce)
     {
        
         if (ereg("[\"|'][[:alpha:]]+://",$text) == false)
         {
             $text = ereg_replace('([[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/])', '<a target=\"_new\" href="\\1">\\1</a>', $text);
         }
+        $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1">\[CE-Ticket \#$1\]</a>', $text);
+        //'#\[wow\](.*?)\[/wow\]#is'
         return($text);
     }
     function original($bugid){
@@ -270,19 +272,24 @@ class View extends Bugs {
          	<?php
          }
          ?>
-           <table width="90%" class="bugreport" align="center" style='border: 1px solid #efefef;'>
+         <table class="bugreport alt1" align="center">
+         	<tr>
+         		<td><div id="headings" class="dark"><img src="<?php echo $this->img($r["type"]);?>" style='' /> <?php echo $r["title"];?></div></td>
+         	</tr>
+         	<tr>
+         		<td><div id="subheading" >Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div>
+         		
+         		</td>
+         	</tr>
+         	<tr>
+         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' ") )); ?></td>
+         	</tr>
+         	
+         </table>
+         
+           <?php /*<table width="90%" class="bugreport" align="center">
                    <tr>
-                        <td  colspan="2" align="right" style='background-color: #e8e8e8;'><?php if($this->user->adminCheck()) { ?><a href="javascript:;" id="assignlink">Assign</a>
-                        <span id="assign"><select id="assignto" name="assign">                                  
-                        <?php $qq = $this->db->query("SELECT * FROM users ORDER BY username;"); 
-                        while($rr = $this->db->fetch_array($qq)){ ?> <option value="<?php echo $rr["id"];?>"><?php echo $rr["username"];?> (<?php echo $rr["email"];?>)</option> <?php } ?>
-                        </select> <a href="javascript:;" onclick="$('#assto').empty();$.post('ajax.php', {assignto: document.getElementById('assignto').value, tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ $('#assto').append(data); });" style='padding: 0;'><small>Change</small></a></span>
-                        <?php //if($r[status] == 1) { ?>
-                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Closed');$.post('ajax.php', {closeticket: 'true', tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>', by: '<?php echo $r["by"];?>'}, function(data){ alert(data); });">Close Ticket</a>
-                        <?php //}else{ ?>
-                        <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Open');$.post('ajax.php', {openticket: 'true', tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); });">Open Ticket</a>
-                        <?php //} ?>
-                        <?php }else { echo '&nbsp;'; } ?> </td>
+                        </td>
                    </tr>
                    <tr>
                    <td width="150" align="center" valign="top">
@@ -304,7 +311,7 @@ class View extends Bugs {
                         
                    </tr>
                    <tr>
-                        <td colspan="2" align="right"style='background-color: #e8e8e8;'>
+                        <td colspan="2" align="right">
                         <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r["id"];?>" style='color: red;'>Delete</a><?php } ?>
                         <a href="javascript:;" id="reply">Reply</a></td>
                    </tr>
@@ -313,16 +320,34 @@ class View extends Bugs {
         $(document).ready(function() { $('#replyForm').hide();
         $('#reply').toggle(function () {$('#replyForm').slideDown();},function () {$('#replyForm').slideUp();});
          $('#assignlink').toggle(function () {$('#assign').show();},function () {$('#assign').hide();}); $('#assign').hide(); } );</script>
-         <?php   
+       */ ?>  <?php   
         }
 
     }
     function responses($bugid){
      $q = $this->db->query("SELECT * FROM list WHERE `parent`='$bugid' ORDER BY `id` ASC");
         $counter = 1;
+        $cssclass = "alt1";
         while($r = $this->db->fetch_array()){
             $counter++;
+            if($cssclass == "alt1")
+            	$cssclass = "alt2";
+            elseif($cssclass == "alt2")
+            	$cssclass = "alt1";
          ?>
+         <table width="80%" class="bugreport <?php echo $cssclass; ?>" align="center">
+         	<tr>
+         		<td><div id="headings" class="dark"><?php echo $r["title"];?></div></td>
+         	</tr>
+         	<tr>
+         		<td><div id="subheading">Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div></td>
+         	</tr>
+         	<tr>
+         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' "))); ?></td>
+         	</tr>
+         	
+         </table>
+		<?php /*
            <table width="90%" class="bugreport" align="center" style='border: 1px solid #efefef;'>
                   
                    <tr>
@@ -342,49 +367,47 @@ class View extends Bugs {
                         <?php if($this->user->adminCheck()) { ?><a href="?cmd=delete&id=<?php echo $r["id"];?>" style='color: red;'>Delete</a><?php } ?></td>
                    </tr>
            </table>
+           */ ?>
          <?php   
         }
     }
     
     function reply($bugid){
      ?>
-            <div id="replyForm" width="70%">
-            <div id="submitForm" align="">
-            <form name="" method="POST" action="">
-            <div style="width: 400px;">
-            <table width="100%" cellspacing="2">
-            <tr>
-            <td>
-            <b>Subject:</b>
-            </td><td>
-            <input type="input" name="subject" />
-            </td><tr>
-            <td><b>Reported by: </b></td>
-            <td>
-            <?php
-              if($_SESSION["userName"] == "") echo "Anonymous";
-                    else echo $this->user->uidToName($this->user->getUID());
-            ?>
-            <br/><small>IP Address: <?php echo $_SERVER["REMOTE_ADDR"];?></small>
-            </td>
-            </tr>
-            <tr>
-                 <td colspan="2"><b>Submission Date:</b><br /><?php echo date("D, F d Y h:m:s A T");?></td>
-                 
-            </tr>
-            </table>                                                 
-             <center><div id="editor"><img src="/loader.gif" id="loader" /> <br /><b>Editor loading...</b> </div> </center>
-            </div><table align="center" width="600"><tr><td>
-            <link type="text/css" href="/js/jquery.wysiwyg.css" rel="stylesheet"> 
-            <textarea name="report" id="report" style="width: 400px; " cols="80" rows="10"></textarea><script>
-            $(document).ready(function() { $('#editor').hide(); $('#report').wysiwyg(); } );</script>  </td></tr></table>
-            <div class="clear"></div>
+<form name="" method="POST" action="">
+<table width="90%" cellspacing="2" align="center">
+<tr>
+<td colspan="2"><div id="headings">Add a Comment</div>
+</td>
+</tr>
 
+<tr>
+	<td valign="top" width="50%">
+		<table width="100%" cellspacing="2" align="center">
+			<tr>
+				<td><label for="subject" >Title</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" class="input" name="subject" /></td>
+			</tr>
+			<tr>
+				<td><label for="subject" >Comment</label></td>
+			</tr>
+			<tr>
+				<td><textarea name="report" class="textarea"></textarea></td>
+			</tr>
+			<tr>
+				<td><div id="working"><img src="/loader.gif" id="loader" /> <b>Working...</b></div> 
 
-            <div id="working"><img src="/loader.gif" id="loader" /> <b>Working...</b></div> 
-
-            </div> <input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';">
-            </div> </form>  
+            </div> <input type="submit" name="submitReport" value="Submit Report" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';"></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td></tr>
+</table>
+              
     <?php
     } 
    
