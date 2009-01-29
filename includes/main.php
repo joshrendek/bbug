@@ -36,6 +36,8 @@
         <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
         <script type="text/javascript" src="js/jquery.wysiwyg.pack.js"></script>
          <script type="text/javascript" src="js/jq-sort.js"></script> 
+                  <script type="text/javascript" src="js/init.js"></script> 
+
          
         <script>$(document).ready(function(){$('#ProjTab').hide();
 $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#ProjTab').hide();});
@@ -62,6 +64,14 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     <a href="?cmd=bugs">Bug List</a>
                     <a href="?cmd=features">Feature List</a>
                     <a href="?cmd=reports">Reports</a>
+                    
+                    <a href="?" onclick="ticketMenu();">Tickets</a>
+                    <div id="ticketMenu" style="display: none; visibility: hidden;">
+                    	<a href="#">Test</a>
+                    	<a href="#">Test</a>
+                    	<a href="#">Test</a>
+                    	<a href="#">Test</a>
+                    </div>
                     
                     <div style="float: right">
            <form name="refiner" id="refiner" method="POST" action=""><select name="specialrefiner" onchange="document.refiner.submit();">
