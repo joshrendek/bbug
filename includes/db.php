@@ -86,7 +86,7 @@ class Database {
        if(strlen($_SERVER["QUERY_STRING"]) > 0) $base .= "".substr($_SERVER["QUERY_STRING"], 0, $plinkpos);
        
        else $base = "?";
-       
+      // echo $results;
        for($i = 1; $i <= $pages; $i++)
         $links .= "<a href='".$base."page=$i' class='paginator'>$i</a>";
        
