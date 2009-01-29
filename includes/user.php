@@ -19,7 +19,7 @@
    }  
    /* get a users id */
    function getUID(){
-     if($_SESSION["userName"] && $_SESSION["passWord"]){
+     if(isset($_SESSION["userName"]) && isset($_SESSION["passWord"])){
               $userName = $_SESSION["userName"];
               $passWord = $_SESSION["passWord"];
                
