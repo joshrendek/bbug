@@ -22,8 +22,8 @@
      <table width="90%" id="list" class="tablesorter" border="0" align="center" cellpadding="0" cellspacing="0">
       <thead>
       <tr>
-              <th>To-Do Lists</th>
-              </tr>
+		<td><div id="headings">To Do Lists</div></td>
+	  </tr>
       </thead>
       <tbody>
       <tr class="L2">
