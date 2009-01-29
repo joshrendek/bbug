@@ -3,6 +3,8 @@
   class Bugs {
     var $db = 0;
     var $user = 0;
+    var $git;
+    var $clientexec; 
     function Bugs($dblink){
        $this->db=$dblink; 
        $this->user=new User();
@@ -240,21 +242,30 @@ class View extends Bugs {
     }
     
     /* from php.net or something -- regex to convert text-links to html links */
-    function make_clickable($text, $ce)
+    function make_clickable($text, $ce, $git)
     {
        
         if (ereg("[\"|'][[:alpha:]]+://",$text) == false)
         {
             $text = ereg_replace('([[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/])', '<a target=\"_new\" href="\\1">\\1</a>', $text);
         }
-        $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', $text);
+        $patterns = array('#\[ce\](.*?)\[/ce\]#is', 
+        					'#\[git\](.*?)\[/git\]#is');
+        $replacements = array(
+        			'<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', 
+        			'<a href="'.$git.'$1">\[GitHub: $1\]</a>'); 
+       // $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', $text);
+       $text = preg_replace($patterns, $replacements, $text);
         //'#\[wow\](.*?)\[/wow\]#is'
         return($text);
     }
     function original($bugid){
     $q = $this->db->query("SELECT * FROM list WHERE `id`='$bugid'");
+	
 
         while($r = $this->db->fetch_array()){
+        	$this->clientexec = $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' ");
+			$this->git = $this->db->first("SELECT github FROM projects WHERE `id`='".$r["project"]."' ");
          ?>
          <?php if( $this->user->adminCheck() ){
          	?>
@@ -282,7 +293,7 @@ class View extends Bugs {
          		</td>
          	</tr>
          	<tr>
-         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' ") )); ?></td>
+         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
          	</tr>
          	
          </table>
@@ -343,7 +354,7 @@ class View extends Bugs {
          		<td><div id="subheading">Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div></td>
          	</tr>
          	<tr>
-         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' "))); ?></td>
+         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
          	</tr>
          	
          </table>
