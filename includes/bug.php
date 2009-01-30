@@ -264,7 +264,7 @@ class View extends Bugs {
     	
     	$report = $this->db->first("SELECT `report` FROM list WHERE `id`='$commentid'");
     	$title = $this->db->first("SELECT `title` FROM list WHERE `id`='$commentid'");
-    	
+     if( $this->user->adminCheck() ){ 
     	if(isset($_POST["save"])){
     		$this->db->query_update("list", array('report' => $_POST["report"], 'title' => $_POST["subject"]), "`id`='$commentid' LIMIT 1");
     		echo '<script>window.location="?cmd=view&id='.$parent.'";</script>';
@@ -305,6 +305,9 @@ class View extends Bugs {
 </td></tr>
 </table>
     	<?php
+    	}else{
+    		echo "Forbidden";
+    	}
     }
     
     function original($bugid){
@@ -315,8 +318,7 @@ class View extends Bugs {
         	$this->clientexec = $this->db->first("SELECT client_exec FROM projects WHERE `id`='".$r["project"]."' ");
 			$this->git = $this->db->first("SELECT github FROM projects WHERE `id`='".$r["project"]."' ");
          ?>
-         <?php if( $this->user->adminCheck() ){
-         	?>
+         <?php if( $this->user->adminCheck() ){ ?>
          	<script>
          		function saveTitle(){
          			$.post('ajax.php', {titlechange: document.getElementById('title').value, tickid: '<?php echo $r["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); } );
@@ -335,7 +337,7 @@ class View extends Bugs {
          	<tr>
          		<td><div id="headings" style="float: left;" class="dark">
          		<img src="<?php echo $this->img($r["type"]);?>" style='' /> <?php echo $r["title"];?></div>
-         		<div style="float: right;"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div>
+         		<?php if( $this->user->adminCheck() ){ ?><div style="float: right;"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div><?php } ?>
          		</td>
          	</tr>
          	<tr>
@@ -400,7 +402,7 @@ class View extends Bugs {
          <table width="80%" class="bugreport <?php echo $cssclass; ?>" align="center" onmouseover="$('#<?php echo $r["id"];?>edit').css('visibility','visible');$('#<?php echo $r["id"];?>edit').css('display','block'); " onmouseout="$('#<?php echo $r["id"];?>edit').css('visibility','hidden');$('#<?php echo $r["id"];?>edit').css('display','none'); ">
          	<tr>
          		<td><div id="headings" style="float: left; "class="dark"><?php echo $r["title"];?></div>
-         		<div style="float: right; visibility: hidden; display: none;" id="<?php echo $r["id"];?>edit"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div>
+         		<?php if( $this->user->adminCheck() ){ ?><div style="float: right; visibility: hidden; display: none;" id="<?php echo $r["id"];?>edit"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div><?php } ?>
 
          		</td>
          	</tr>
