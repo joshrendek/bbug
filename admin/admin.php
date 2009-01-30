@@ -11,10 +11,10 @@
 <table width="100%" align="center" cellspacing="0" cellpadding="0">
 	<tr>
 		<td valign="top" id="adminLeft" width="150">
-			<h3>Projects</h3>
+			<div id="headings-small">Projects</div>
    			<a href="?admin&adm=addproject">Add Project</a>
    			<a href="?admin&adm=listprojects">List Projects</a>
-			<h3>Users</h3>
+			<div id="headings-small">Users</div>
    			<a href="?admin&adm=listusers">List Users </a>
 		</td>
 		

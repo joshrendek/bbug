@@ -259,6 +259,54 @@ class View extends Bugs {
         //'#\[wow\](.*?)\[/wow\]#is'
         return($text);
     }
+    
+    function edit($parent, $commentid){
+    	
+    	$report = $this->db->first("SELECT `report` FROM list WHERE `id`='$commentid'");
+    	$title = $this->db->first("SELECT `title` FROM list WHERE `id`='$commentid'");
+    	
+    	if(isset($_POST["save"])){
+    		$this->db->query_update("list", array('report' => $_POST["report"], 'title' => $_POST["subject"]), "`id`='$commentid' LIMIT 1");
+    		echo '<script>window.location="?cmd=view&id='.$parent.'";</script>';
+    	}
+    	?>
+    	
+    	<form name="" method="POST" action="">
+<table width="90%" cellspacing="2" align="center">
+<tr>
+<td colspan="2"><div id="headings">Edit Comment #<?php echo $commentid; ?></div>
+</td>
+</tr>
+
+<tr>
+	<td valign="top" width="50%">
+		<table width="100%" cellspacing="2" align="center">
+			<tr>
+				<td><label for="subject" >Title</label></td>
+			</tr>
+			<tr>
+				<td><input type="text" value="<?php echo $title; ?>"class="input" name="subject" /></td>
+			</tr>
+			<tr>
+				<td><label for="subject" >Comment</label></td>
+			</tr>
+			<tr>
+				<td><textarea name="report" class="textarea"><?php echo $report; ?></textarea></td>
+			</tr>
+			<tr>
+				<td><div id="working"><img src="/loader.gif" id="loader" /> <b>Working...</b></div> 
+
+            </div> <input type="submit" name="save" value="Save" onclick="$('#working').fadeIn(); document.getElementById('working').style.visibility='visible';"></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td></tr>
+</table>
+    	<?php
+    }
+    
     function original($bugid){
     $q = $this->db->query("SELECT * FROM list WHERE `id`='$bugid'");
 	
@@ -285,7 +333,10 @@ class View extends Bugs {
          ?>
          <table class="bugreport alt1" align="center">
          	<tr>
-         		<td><div id="headings" class="dark"><img src="<?php echo $this->img($r["type"]);?>" style='' /> <?php echo $r["title"];?></div></td>
+         		<td><div id="headings" style="float: left;" class="dark">
+         		<img src="<?php echo $this->img($r["type"]);?>" style='' /> <?php echo $r["title"];?></div>
+         		<div style="float: right;"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div>
+         		</td>
          	</tr>
          	<tr>
          		<td><div id="subheading" >Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div>
@@ -346,15 +397,20 @@ class View extends Bugs {
             elseif($cssclass == "alt2")
             	$cssclass = "alt1";
          ?>
-         <table width="80%" class="bugreport <?php echo $cssclass; ?>" align="center">
+         <table width="80%" class="bugreport <?php echo $cssclass; ?>" align="center" onmouseover="$('#<?php echo $r["id"];?>edit').css('visibility','visible');$('#<?php echo $r["id"];?>edit').css('display','block'); " onmouseout="$('#<?php echo $r["id"];?>edit').css('visibility','hidden');$('#<?php echo $r["id"];?>edit').css('display','none'); ">
          	<tr>
-         		<td><div id="headings" class="dark"><?php echo $r["title"];?></div></td>
+         		<td><div id="headings" style="float: left; "class="dark"><?php echo $r["title"];?></div>
+         		<div style="float: right; visibility: hidden; display: none;" id="<?php echo $r["id"];?>edit"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div>
+
+         		</td>
          	</tr>
          	<tr>
-         		<td><div id="subheading">Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div></td>
+         		<td><div id="subheading">Reported by <?php echo $this->user->uidToName($r["by"]);?> | <?php echo date("M, d Y H:m:A",$r["started"]); ?></div>
+         		
+         		</td>
          	</tr>
          	<tr>
-         	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
+         	<td id="reportarea" ><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
          	</tr>
          	
          </table>
@@ -418,6 +474,7 @@ class View extends Bugs {
 	</table>
 </td></tr>
 </table>
+</form>
               
     <?php
     } 
