@@ -145,6 +145,8 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
      $this->message("Record deleted.");   
     }elseif($cmd == "reports")
         include('report.php');
+    elseif($cmd == "edit")
+    	include('edit.php');
     elseif($cmd == "bugs")
         include('bugs.php');
     elseif($cmd == "register")
