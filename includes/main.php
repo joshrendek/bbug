@@ -90,8 +90,11 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     <td><a href="?cmd=reports">Reports</a></td>
                     <?php if(isset($_GET["id"]) && $_GET["cmd"]=="view" && $this->user->adminCheck()){ ?>
                     <td></td>
-                    <td><a href="?cmd=view&id=<?php echo $_GET["id"]; ?>">This Ticket</a> <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETMENUUNI" onclick=""><img src="images/arrow.png" border="0" width="10" height="10" /></a>
-                    <div id="ticketMenuUniq" style="display: none; visibility: hidden;">
+                    <td onmouseover="thisTicketShow();"><a href="?cmd=view&id=<?php echo $_GET["id"]; ?>">This Ticket</a> 
+                    <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETMENUUNI" onclick="">
+                    	<img src="images/arrow.png" border="0" width="10" height="10" />
+                    </a>
+                    <div id="ticketMenuUniq"  onmouseout="thisTicketHide();" style="display: none; visibility: hidden;">
                     	<div id="headings-small">Ticket Options</div>
                     	<a href="javascript:;" onclick="$('#status').empty();$('#status').append('Open');$.post('ajax.php', {openticket: 'true', tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert(data); });">Open</a>
                         <a href="javascript:;" onclick="$('#status').empty();$('#status').append('Closed');$.post('ajax.php', {closeticket: 'true', tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>', by: '<?php echo $r["by"];?>'}, function(data){ alert(data); });">Close</a>
