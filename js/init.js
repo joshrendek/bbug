@@ -16,3 +16,11 @@ $(document).ready(function () {
 			$('#ticketMenuUniq').hide();
 		});
  });
+
+function thisTicketShow(){
+			$('#ticketMenuUniq').css("visibility", "visible");
+			$('#ticketMenuUniq').css("display", "block");
+}
+function thisTicketHide(){
+			$('#ticketMenuUniq').hide();
+}
