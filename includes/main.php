@@ -35,8 +35,8 @@
 
         <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
         <script type="text/javascript" src="js/jquery.wysiwyg.pack.js"></script>
-         <script type="text/javascript" src="js/jq-sort.js"></script> 
-                  <script type="text/javascript" src="js/init.js"></script> 
+        <script type="text/javascript" src="js/jq-sort.js"></script> 
+        <script type="text/javascript" src="js/init.js"></script> 
 
          
         <script>$(document).ready(function(){$('#ProjTab').hide();
@@ -73,7 +73,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     <div id="ticketMenu" style="display: none; visibility: hidden;">
                     	<div id="headings-small">Ticket List</div>
                     	<a href="?cmd=bugs">Bug List (<?php echo $counter['bug']; ?>)</a>
-                    	<a href="?cmd=features">Feature Lis (<?php echo $counter['feature']; ?>)</a>
+                    	<a href="?cmd=features">Feature List (<?php echo $counter['feature']; ?>)</a>
                     	<a href="?specialrefiner=all">Show All (<?php echo $counter['open']+$counter['closed']; ?>)</a>
                     	<a href="?specialrefiner=open">Show Open (<?php echo $counter['open']; ?>)</a>
                     	<a href="?specialrefiner=closed">Show Closed (<?php echo $counter['closed']; ?>)</a>
