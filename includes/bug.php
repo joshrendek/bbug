@@ -266,7 +266,7 @@ class View extends Bugs {
     	$title = $this->db->first("SELECT `title` FROM list WHERE `id`='$commentid'");
      if( $this->user->adminCheck() ){ 
     	if(isset($_POST["save"])){
-    		$this->db->query_update("list", array('report' => $_POST["report"], 'title' => $_POST["subject"]), "`id`='$commentid' LIMIT 1");
+    		$this->db->query_update("list", array('report' => nl2br($_POST["report"]), 'title' => $_POST["subject"]), "`id`='$commentid' LIMIT 1");
     		echo '<script>window.location="?cmd=view&id='.$parent.'";</script>';
     	}
     	?>
@@ -291,7 +291,7 @@ class View extends Bugs {
 				<td><label for="subject" >Comment</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="report" class="textarea"><?php echo $report; ?></textarea></td>
+				<td><textarea name="report" class="textarea"><?php echo str_replace('<br />', '', $report); ?></textarea></td>
 			</tr>
 			<tr>
 				<td><div id="working"><img src="/loader.gif" id="loader" /> <b>Working...</b></div> 
