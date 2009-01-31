@@ -10,7 +10,7 @@ if(isset($_POST["submitReport"])){
    // do file uploads
   $target = "";
   $file_name = "";
-  if(isset($_FILES['attachment'])){
+  if(strlen($_FILES['attachment']['name'])>0){
   	$target = "uploads/" ;
   	
   	// get file ext
