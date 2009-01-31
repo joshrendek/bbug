@@ -69,8 +69,8 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     $counter['feature'] = $this->db->first("SELECT count(*) FROM list WHERE `type`='1' AND `parent`='0' ");
                     $counter['bug'] = $this->db->first("SELECT count(*) FROM list WHERE `type`='0' AND `parent`='0' ");
                     ?>
-                    <td><a href="?">Tickets</a> <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETS" onclick=""><img src="images/arrow.png" border="0" width="10" height="10" /></a>
-                    <div id="ticketMenu" style="display: none; visibility: hidden;">
+                    <td onmouseover="ticketMenuShow();"><a href="?">Tickets</a> <a href="#" style="margin-top: 2px; margin-left: 3px; position: absolute;" id="TICKETS" onclick=""><img src="images/arrow.png" border="0" width="10" height="10" /></a>
+                    <div id="ticketMenu" onmouseout="ticketMenuHide();" style="display: none; visibility: hidden;">
                     	<div id="headings-small">Ticket List</div>
                     	<a href="?cmd=bugs">Bug List (<?php echo $counter['bug']; ?>)</a>
                     	<a href="?cmd=features">Feature List (<?php echo $counter['feature']; ?>)</a>
