@@ -348,7 +348,21 @@ class View extends Bugs {
          	<tr>
          	<td id="reportarea"><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
          	</tr>
+         	<?php
          	
+         	if(strlen($r["attachment"]) > 0){
+         		$fn = strpos($r["attachment"], '-');
+         		
+         		
+         		?>
+         			<tr>
+         			<td><div id="headings-small">Attachment</div></td>
+         			</tr>
+         			<tr><td><a href="<?php echo $r["attachment"]; ?>" target="_blank"><?php echo str_replace('uploads/', '',substr($r["attachment"], 0, $fn)); ?></a></td></tr>
+         		<?php
+         	}
+         	
+         	?>
          </table>
          
            <?php /*<table width="90%" class="bugreport" align="center">
@@ -414,7 +428,21 @@ class View extends Bugs {
          	<tr>
          	<td id="reportarea" ><?php echo stripslashes($this->make_clickable($r["report"], $this->clientexec, $this->git )); ?></td>
          	</tr>
+         	<?php
          	
+         	if(strlen($r["attachment"]) > 0){
+         		$fn = strpos($r["attachment"], '-');
+         		
+         		
+         		?>
+         			<tr>
+         			<td><div id="headings-small">Attachment</div></td>
+         			</tr>
+         			<tr><td><a href="<?php echo $r["attachment"]; ?>" target="_blank"><?php echo str_replace('uploads/', '',substr($r["attachment"], 0, $fn)); ?></a></td></tr>
+         		<?php
+         	}
+         	
+         	?>
          </table>
 		<?php /*
            <table width="90%" class="bugreport" align="center" style='border: 1px solid #efefef;'>
@@ -443,7 +471,8 @@ class View extends Bugs {
     
     function reply($bugid){
      ?>
-<form name="" method="POST" action="">
+<form name="" method="POST" action="" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 <table width="90%" cellspacing="2" align="center">
 <tr>
 <td colspan="2"><div id="headings">Add a Comment</div>
@@ -464,6 +493,12 @@ class View extends Bugs {
 			</tr>
 			<tr>
 				<td><textarea name="report" class="textarea"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="attachment">Attachment</label></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="attachment" /></td>
 			</tr>
 			<tr>
 				<td><div id="working"><img src="/loader.gif" id="loader" /> <b>Working...</b></div> 
