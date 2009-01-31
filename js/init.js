@@ -24,3 +24,12 @@ function thisTicketShow(){
 function thisTicketHide(){
 			$('#ticketMenuUniq').hide();
 }
+
+function ticketMenuShow(){
+			$('#ticketMenu').css("visibility", "visible");
+			$('#ticketMenu').css("display", "block");
+}
+
+function ticketMenuHide(){
+			$('#ticketMenu').hide();
+}
