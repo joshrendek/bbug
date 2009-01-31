@@ -12,13 +12,49 @@
     $type = 0;
   else
     $type = 1;
+    
+  $LASTID = $this->db->lastID();
+  
+  
+  // do file uploads
+  $target = "";
+  $file_name = "";
+  if(isset($_FILES['attachment'])){
+  	$target = "uploads/" ;
+  	
+  	// get file ext
+  	$file_ext = end(explode('.', $_FILES['attachment']['name']));
+  	
+  	// check against config values
+  	$allowed_ext = explode(',', allowed_types);
+  	
+  	if(in_array($file_ext, $allowed_ext)){
+  		$file_name = $_FILES['attachment']['name']."-".time().".".$file_ext;
+  		if(move_uploaded_file($_FILES['attachment']['tmp_name'], $target.$file_name)){
+  			//echo ""
+  		}else{
+  			echo "<center>Your ticket was submitted but the file was not attached. Ask the System Administrator to check file permissions on the upload directory.</center>";
+  			$file_name = "";
+  			$target = "";
+  			
+  		}
+  	}else{
+  		echo "Ticket was submitted but your attachment was denied. Not in allowed file types.";
+  		$file_name = "";
+  			$target = "";
+  	}
+  }else{
+  	
+  }
+  
+  
   $bugData = array('id' => 'null', 'project' => $_POST["project"], 'parent' => 0, 'title' => strip_tags($_POST["subject"]), 
         'report' => nl2br($_POST["report"]), 'status' => '1', 'by' => $reportedby, 'priority' => $_POST["priority"], 
-        'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '');
+        'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '', 'attachment' => $target.$file_name);
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Report submitted.</h3></center>");
+
   
-  $LASTID = $this->db->lastID();
   //echo $lastID;
   // send emails to administrators
   $this->db->query("SELECT * FROM users WHERE `acl`='0'");
@@ -34,7 +70,8 @@
 
 <link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet">
 <div id="submitForm" align="">
-<form name="" method="POST" action="">
+<form name="" method="POST" action="" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 <table width="90%" cellspacing="2" align="center">
 <tr>
 <td colspan="2"><div id="headings">Create New A New Ticket</div>
@@ -81,6 +118,12 @@
 			</tr>
 			<tr>
 				<td><select name="project" class="select"><? echo $bugView->listProjects();?></select></td>
+			</tr>
+			<tr>
+				<td><label for="attachment">Attachment</label></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="attachment" /></td>
 			</tr>
 		</table>
 	</td>

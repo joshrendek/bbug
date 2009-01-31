@@ -178,6 +178,7 @@ input[type='text'] {
 	font-size: 150%; letter-spacing: 1px;
 }
 .input { width: 500px; }
+
 .textarea { width: 500px; height: 200px;}
 .select { width: 400px; font-size: 150%; }
 

@@ -5,11 +5,44 @@
   
   $bugView = new View($this->db);
   
-   if(isset($_POST["submitReport"])){ 
+if(isset($_POST["submitReport"])){ 
+  
+   // do file uploads
+  $target = "";
+  $file_name = "";
+  if(isset($_FILES['attachment'])){
+  	$target = "uploads/" ;
+  	
+  	// get file ext
+  	$file_ext = end(explode('.', $_FILES['attachment']['name']));
+  	
+  	// check against config values
+  	$allowed_ext = explode(',', allowed_types);
+  	
+  	if(in_array($file_ext, $allowed_ext)){
+  		$file_name = $_FILES['attachment']['name']."-".time().".".$file_ext;
+  		if(move_uploaded_file($_FILES['attachment']['tmp_name'], $target.$file_name)){
+  			//echo ""
+  		}else{
+  			echo "<center>Your ticket was submitted but the file was not attached. Ask the System Administrator to check file permissions on the upload directory.</center>";
+  			$file_name = "";
+  			$target = "";
+  			
+  		}
+  	}else{
+  		echo "Ticket was submitted but your attachment was denied. Not in allowed file types.";
+  		$file_name = "";
+  			$target = "";
+  	}
+  }else{
+  	
+  }
+  
+  
   $bugData = array('id' => 'null', 'project' => $this->db->first("SELECT `project` FROM list WHERE `id`='$bugid'", 0, 0),
   'parent' => $bugid, 'title' => $_POST["subject"], 
         'report' => nl2br($_POST["report"]), 'status' => '', 'by' => $reportedby, 'priority' => 0, 
-        'type' => 0, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '');
+        'type' => 0, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '', 'attachment' => $target.$file_name);
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Reply added.</h3></center>");
   
