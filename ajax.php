@@ -37,7 +37,7 @@ if(isset($_POST["assignto"]) && $isadmin == 1){
   $mydb->query("SELECT * FROM users WHERE `id`='$assignto'");
   $message = "You have been assigned a new ticket.
   
-  Please visit http://".$_SERVER["SERVER_NAME"]."/?cmd=view&id=$tickid to view it.";
+  Please visit ".BBPATH."/?cmd=view&id=$tickid to view it.";
   while($r = $mydb->fetch_array()){
     $user->mailUser($r["id"], 'BlueBug', $message, 'You have been assigned to a ticket');
   }
