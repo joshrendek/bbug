@@ -50,11 +50,14 @@ if(isset($_POST["submitReport"])){
 ?>  
 <?php 
 // view original ticket 
-
+if($bugid > 0){
 $bugView->original($bugid);
 
 $bugView->responses($bugid);
 
 $bugView->reply($bugid);
+}else{
+	echo "Invalid bug ID";
+}
 ?>
 <div class="clear"></div>
