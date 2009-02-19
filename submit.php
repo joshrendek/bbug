@@ -125,6 +125,12 @@
 			<tr>
 				<td><input type="file" name="attachment" /></td>
 			</tr>
+			<tr>
+				<td>Shortcuts: <br>
+				<b>[CE]ID[/CE]:</b> Link to this project's ClientExec.<br>
+				<b>[GIT]Commit ID[/GIT]:</b> Link to a specific GitHub committ for this project.<br>
+				</td>
+			</tr>
 		</table>
 	</td>
 </tr>
