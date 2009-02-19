@@ -1,0 +1,16 @@
+INSTALLATION
+=============================
+1. Unzip the archive and upload to your web server.
+2. Edit config.php with the correct credentials.
+3. Save config.
+4. Go to http://yoursite.com/bluebug/install.php
+5. Make SURE you create your admin account here.
+6. Delete install.php when finished.
+
+
+UPGRADING FROM 1.2 -> 1.5 
+=============================
+1. Upload the script.
+2. Update your config.php with the database settings again (you must overwrite it, or at least copy the changes into yours for the new features to work).
+3. Run http://yoursite.com/bluebug/upgrade.php
+4. Finished!

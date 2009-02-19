@@ -122,10 +122,11 @@
         echo "<tr>";
         echo "<td colspan='3'>";
         echo "Client Exec URL: <input type='text' name='client_exec' class='input' style='width: 300px;' value='".$r["client_exec"]."' />";
-        echo "<br>GitHub Commit URL: <input type='text' name='github' class='input' style='width: 300px;' value='".$r["github"]."' />";
-
+        echo "<br>GitHub Commit URL: <input type='text' name='github' class='input' style='width: 300px;' value='".$r["github"]."' /> <br>";
+        echo "<small>(Example: http://github.com/bluescripts/bbug/commit/ )</small><br>";
+		echo "<br><input type='submit' name='update' value='update' />";
         echo "</td></tr>";
-        echo "<input type='submit' name='update' value='update' /></form>";
+        echo "</form>";
        }   
         
        ?></table><?php
