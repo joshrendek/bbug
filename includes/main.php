@@ -182,7 +182,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   function footStart(){
   ?>
   <center class="copyright">Powered by <a href="http://bluescripts.net/bluebug/" target="_blank">BlueBug</a>
-  <h4>The version you are currently viewing is in development and is not the downloadable version. If you want to see functionality of the downloadable version please look at the screen shots.</h4>
+
   </center>
       </body>
 </html>
