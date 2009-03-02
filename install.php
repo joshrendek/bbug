@@ -110,7 +110,7 @@ $mydb->query($todoSQL);
 if(strlen($mydb->errorno) == 0)
 echo "<b>ToDo_main table created....</b><br/>";
 
-$todoLSQL = " CREATE TABLE `db41812_bb`.`todo_list` (
+$todoLSQL = " CREATE TABLE `todo_list` (
 `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
 `content` TEXT NOT NULL ,
 `status` INT( 2 ) NOT NULL ,
@@ -120,8 +120,9 @@ $mydb->query($todoLSQL);
 if(strlen($mydb->errorno) == 0)
 echo "<b>ToDo_List table created....</b><br/>";
 
-$projModSQL = "ALTER TABLE `projects` ADD `client_exec` VARCHAR( 255 ) NOT NULL ;ALTER TABLE `projects` ADD `github` VARCHAR( 255 ) NOT NULL ;";
+$projModSQL = "ALTER TABLE `projects` ADD `client_exec` VARCHAR( 255 ) NOT NULL ;";
 $mydb->query($projModSQL);
+$mydb->query("ALTER TABLE `projects` ADD `github` VARCHAR( 255 ) NOT NULL ;");
 
 $mydb->query("ALTER TABLE `list` ADD `attachment` VARCHAR( 100 ) NOT NULL ;");
 
