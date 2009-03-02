@@ -104,6 +104,8 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                         while($rr = $this->db->fetch_array($qq)){ ?> <option value="<?php echo $rr["id"];?>"><?php echo $rr["username"];?> (<?php echo $rr["email"];?>)</option> <?php } ?>
                         </select> <a href="javascript:;" onclick="$('#assto').empty();$.post('ajax.php', {assignto: document.getElementById('assignto').value, tickid: '<?php echo $_GET["id"];?>', username:'<?php echo $_SESSION["userName"];?>', password: '<?php echo $_SESSION["passWord"];?>'}, function(data){ alert('Assigned to: ' + data); });" >Change</a></span>
                         
+                        <a href="?cmd=delete&id=<?php echo $_GET["id"]; ?>" style='color: red;'>Delete</a>
+                        
                     </td>
                     <?php } ?>
                     
@@ -145,7 +147,8 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
      }else
         $this->db->del("list", "id='$bugid'", '1');   
      
-     $this->message("Record deleted.");   
+     $this->message("Record deleted."); 
+     echo "<script>window.location='?';</script>";  
     }elseif($cmd == "reports")
         include('report.php');
     elseif($cmd == "edit")
