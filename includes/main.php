@@ -47,18 +47,18 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
         <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"> 
         
         
-        <table align="center" width="1000" cellspacing="0" cellpadding="0">
-        	<tr>
-        		<td><img src="images/bluebug_02.gif" width="259" height="71" alt=""></td>
+        <table align="center" width="100%" cellspacing="0" cellpadding="0">
+        	<tr id="bbhead">
+        		<td><div id="logo">BlueBug</div></td>
         		<td id="bbtop" width="100%"> <div style='float: right;padding-right: 30px;'><? echo $this->user->loginForm();?></div></td>
        		</tr>
        		<tr>
        			<td colspan="2">
        			<table width="100%" cellspacing="0" cellpadding="0" align="center">
        			<tr>
-       			<td align="left"><img src="images/bluebug_05.gif" width="35" height="29" alt=""></td>
+
        			<td id="bbbot" width="100%" valign="top" >
-       			<table width="55%" style="padding-top: 6px;" align="left" cellspacing="0" cellpadding="0">
+       			<table width="55%" style="padding-top: 6px;" id="bbotnav" align="left" cellspacing="0" cellpadding="0">
        				<tr>
        				<td><a href="?">Home</a></td>
                     <td><a href="?cmd=submit">New Ticket</a></td>
@@ -115,7 +115,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
                     
                     
                     </td>
-       			<td align="right"><img src="images/bluebug_08.gif" width="23" height="29" alt=""></td>
+
        			</tr>
        			</table>
        			</td>
