@@ -23,10 +23,13 @@ $main->headStart();
 	<div align="center">
 		
 		
-		<table width="1000" align="center" id="main_bb" cellspacing="0" cellpadding="0">
-		<tr><td align="center"><img src="images/body_01.gif" height="27" width="1000"></td></tr>
-			<tr><td id="mainbody"><?php $main->body(); ?></td></tr>
-		<tr><td align="center"><img src="images/body_04.gif"></td></tr>
+		<table width="100%" align="center" id="main_bb" cellspacing="0" cellpadding="0">
+		<tr><td align="center"></td></tr>
+			<tr><td id="mainbody"><?php $main->body(); ?></td>
+			<td width="300"><?php $main->nav(); ?></td>
+			</tr>
+			
+		<tr><td align="center"></td></tr>
 		</table>
 		
 		
