@@ -20,7 +20,6 @@
         <title>BlueBug - Tracking Software</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link type="text/css" href="bug.css" rel="stylesheet">
-        <link type="text/css" href="js/jquery.wysiwyg.css" rel="stylesheet">
         <!--[if lt IE 8.]>
         <style type="text/css">
         #cLeft { margin-left: -5px; }
@@ -34,7 +33,6 @@
     <![endif]-->
 
         <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
-        <script type="text/javascript" src="js/jquery.wysiwyg.pack.js"></script>
         <script type="text/javascript" src="js/jq-sort.js"></script> 
         <script type="text/javascript" src="js/init.js"></script> 
 
@@ -177,7 +175,15 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   }
   
   function nav(){
-  	
+  	?>
+  	<div style='margin-top: 20px;'></div>
+  	<h3>Projects</h3>
+  	<?php
+  	 $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
+             while($r = mysql_fetch_array($tpr)){
+             	$open = $this->db->first("SELECT count(*) FROM list WHERE `status`='1' AND `parent`='0' AND `project`='".$r['id']."';");
+                echo '<a href="?specialrefiner='.$r['id'].'"><span class="openticks" id="open'.$r['id'].'"> '.$open.' </span> '.$r['name'].'</a>';
+             }
   }
   
    

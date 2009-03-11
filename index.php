@@ -26,7 +26,7 @@ $main->headStart();
 		<table width="100%" align="center" id="main_bb" cellspacing="0" cellpadding="0">
 		<tr><td align="center"></td></tr>
 			<tr><td id="mainbody"><?php $main->body(); ?></td>
-			<td width="300"><?php $main->nav(); ?></td>
+			<td width="300" id="sidenav"><?php $main->nav(); ?></td>
 			</tr>
 			
 		<tr><td align="center"></td></tr>
