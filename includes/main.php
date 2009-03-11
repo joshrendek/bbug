@@ -8,9 +8,11 @@
   class Main { 
    var $db = 0;
    var $user = 0;
+   var $s = 0;
    function Main($db){
     $this->db=$db; 
     $this->user = new User();
+    $this->s = new Status($db);      
    }
    
    function headStart(){
@@ -35,6 +37,7 @@
         <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
         <script type="text/javascript" src="js/jq-sort.js"></script> 
         <script type="text/javascript" src="js/init.js"></script> 
+
 
          
         <script>$(document).ready(function(){$('#ProjTab').hide();
@@ -164,7 +167,10 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
     elseif(isset($_GET["admin"]))
      include('admin/admin.php');       
     elseif($cmd == "" && !isset($_GET["admin"])){
-     include('home.php');
+     if(!isset($_GET['specialrefiner']))
+     	include('home.php');
+     else
+     	include('home_old.php');
     }
   }   
   
@@ -183,6 +189,8 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
              while($r = mysql_fetch_array($tpr)){
              	$open = $this->db->first("SELECT count(*) FROM list WHERE `status`='1' AND `parent`='0' AND `project`='".$r['id']."';");
                 echo '<a href="?specialrefiner='.$r['id'].'"><span class="openticks" id="open'.$r['id'].'"> '.$open.' </span> '.$r['name'].'</a>';
+                ?>
+                <?php
              }
   }
   

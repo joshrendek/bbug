@@ -4,8 +4,6 @@
 ?>
 
 <?php 
-$list = new Bugs($this->db);
-$list->tableHeader();
-$list->bblist();
+$this->s->display();
 //$list->quickadd();
 ?>

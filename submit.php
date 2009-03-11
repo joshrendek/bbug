@@ -13,7 +13,6 @@
   else
     $type = 1;
     
-  $LASTID = $this->db->lastID();
   
   
   // do file uploads
@@ -53,8 +52,9 @@
         'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '', 'attachment' => $target.$file_name);
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Report submitted.</h3></center>");
+  $LASTID = $this->db->lastID();
 
-  
+  $this->s->n("<a href='?cmd=view&id=$LASTID'>\"{$_POST['subject']}\"</a> was created by ");
   //echo $lastID;
   // send emails to administrators
   $this->db->query("SELECT * FROM users WHERE `acl`='0'");

@@ -207,4 +207,7 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 #sidenav a { font-size: 80%; color: #555555; display: block;  padding-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 250px; }
 #sidenav a:hover { background-color: #cdcdcd; text-decoration: none; }
 
-.openticks { padding-left: 10px; padding-right: 10px;  color: white; background-color: #5A9ECF; margin-right: 10px; }
+.openticks { padding-left: 10px; padding-right: 15px;  color: white; background-image: url(images/bluebutton.gif); background-repeat: no-repeat;  margin-right: 10px; }
+
+#status { background-color: white; margin-top: 15px; } 
+#status h3 { font-size: 100%; }
