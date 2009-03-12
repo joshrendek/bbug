@@ -46,7 +46,6 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
         $(".statustype").corner('5px');
         $(".openticks").corner('5px');
         $(".date").corner('5px');
-
         $("#status").corner();
         $("#scm").corner();
         });
@@ -194,10 +193,19 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   	<div style='margin-top: 20px;'></div>
   	<h3>Projects</h3>
   	<?php
+  	if(isset($_GET['cmd']) && $_GET['cmd'] == 'view'){
+		$bugid = $this->db->clean($_GET['id'], '', '');
+		$projid = $this->db->first("SELECT `project` FROM list WHERE `id`='$bugid'");
+	}else{
+		$projid = 0;
+	}
   	 $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
              while($r = mysql_fetch_array($tpr)){
              	$open = $this->db->first("SELECT count(*) FROM list WHERE `status`='1' AND `parent`='0' AND `project`='".$r['id']."';");
-                echo '<a href="?specialrefiner='.$r['id'].'"><span class="openticks" id="open'.$r['id'].'">'.$open.' </span> '.$r['name'].'</a>';
+                echo '<a href="?specialrefiner='.$r['id'].'" ';
+                if($projid == $r['id'])
+                echo ' class="current" ';
+                echo '><span class="openticks" id="open'.$r['id'].'">'.$open.' </span> '.$r['name'].'</a>';
                 ?>
                 <?php
              }
@@ -207,6 +215,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   		$proj_git = $this->db->first("SELECT `github` FROM projects WHERE `id`='".$projid."'");
  		?><br>
  		<h3>GitHub Commits</h3>
+ 		<?php if(strlen($proj_git)!=0){ ?>
  		<script type="text/javascript">$(function(){
 					$('#github').load("/integration/github.php?url=<?php echo $proj_git;?>"); 
 				});
@@ -214,6 +223,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
 		<img src='loader.gif' id='imgloader'>
  		<div id='github'></div>
  		<?php
+ 		}else{ echo "No repository setup."; }
    	}
   
   }

@@ -198,8 +198,8 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 #reportarea { font-size: 12px; }
 #reportarea a { padding: 0; margin: 0; }
 
-.alt1 { background-color: #efefff; padding: 5px; width: 998px; border-bottom: 1px solid #cdcdcd; }
-.alt2 { background-color: #ffffff; padding: 5px; width: 998px; border-bottom: 1px solid #cdcdcd; }
+.alt1 { background-color: #efefff; padding: 5px; border-bottom: 1px solid #cdcdcd; }
+.alt2 { background-color: #ffffff; padding: 5px; border-bottom: 1px solid #cdcdcd; }
 
 .small a { font-weight: none; font-size: 10px; color: #888888;}
 
@@ -218,14 +218,16 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 #scm #add { background-color: #ddffdd; margin: 5px; }
 #scm #remove { background-color: #ffdddd;  margin: 5px; }
 #github { overflow: auto; height: 350px; }
+.round { margin-top: 15px; }
+.tableup tr td{ vertical-align: top; }
 
-.update { font-size: 90%; color: #888888; margin-left: 40px; border-bottom: 1px solid #dfdfdf; margin-right: 50px;  margin-top: 10px; margin-bottom: 4px; height: 20px; }
+.current { background-color: #cdcdcd; border-bottom: 1px solid #bcbcbc;}
+.update { font-size: 90%; color: #888888; border-bottom: 1px solid #dfdfdf; margin-bottom: auto; padding: auto; height: auto; }
 
-.update #statustext { float: right; }
 .update a { color: #5A9ECF; }
 .update a:hover { color: #266A9B; text-decoration: none;}
 
-#statustype { margin-top: -15px; float: right; background-color: #5A9ECF; width: 70px; color: white; font-size: 80%; text-align: center; text-transform: uppercase; }
+#statustype { background-color: #5A9ECF; width: 70px; color: white; font-size: 80%; text-align: center; text-transform: uppercase; }
 #statususer { color: #222222; }
 
 .date { background-color: #efefef; width: 75px; padding: 5px; margin: 5px;font-size: 70%; color: #666666; float: left; text-align: center; }

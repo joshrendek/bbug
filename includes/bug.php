@@ -236,9 +236,11 @@ $("#<?php echo $id;?>PriB").toggle(function () {$('#<?php echo $id;?>Pri').fadeI
   
 class View extends Bugs {
     var $db = 0;
+    var $s;
     function View($db){
         $this->db=$db;
         $this->user=new User();
+        $this->s = new Status($this->db, $this->user);
     }
     
     /* from php.net or something -- regex to convert text-links to html links */
@@ -247,7 +249,8 @@ class View extends Bugs {
        // remake the git url
        
        $x = explode('/', $git);
-	   $user_proj = "http://github.com/".$x[3]."/".$x[4]."/commit";
+	   //$user_proj = "http://github.com/".$x[3]."/".$x[4]."/commit";
+	   $user_proj = "?commit=";
         if (ereg("[\"|'][[:alpha:]]+://",$text) == false)
         {
             $text = ereg_replace('([[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/])', '<a target=\"_new\" href="\\1">\\1</a>', $text);
@@ -256,7 +259,7 @@ class View extends Bugs {
         					'#\[git\](.*?)\[/git\]#is');
         $replacements = array(
         			'<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', 
-        			'<a href="'.$user_proj.'/$1" target="_blank">\[GitHub: $1\]</a>'); 
+        			'<a href="'.$user_proj.'$1" target="_blank">\[GitHub: $1\]</a>'); 
        // $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', $text);
        $text = preg_replace($patterns, $replacements, $text);
         //'#\[wow\](.*?)\[/wow\]#is'
@@ -270,7 +273,12 @@ class View extends Bugs {
      if( $this->user->adminCheck() ){ 
     	if(isset($_POST["save"])){
     		$this->db->query_update("list", array('report' => nl2br($_POST["report"]), 'title' => $_POST["subject"]), "`id`='$commentid' LIMIT 1");
+    		$this->s->n($commentid, $reportedby, 'edit', $this->db->first("SELECT `project` FROM list WHERE `id`='$parent'", 0, 0));
+
+    		
     		echo '<script>window.location="?cmd=view&id='.$parent.'";</script>';
+    		
+
     	}
     	?>
     	
@@ -336,7 +344,7 @@ class View extends Bugs {
          	<?php
          }
          ?>
-         <table class="bugreport alt1" align="center">
+         <table class="bugreport alt1 round" id="original" align="center" width="95%">
          	<tr>
          		<td><div id="headings" style="float: left;" class="dark">
          		<img src="<?php echo $this->img($r["type"]);?>" style='' /> <?php echo $r["title"];?></div>
@@ -416,7 +424,7 @@ class View extends Bugs {
             elseif($cssclass == "alt2")
             	$cssclass = "alt1";
          ?>
-         <table width="80%" class="bugreport <?php echo $cssclass; ?>" align="center" onmouseover="$('#<?php echo $r["id"];?>edit').css('visibility','visible');$('#<?php echo $r["id"];?>edit').css('display','block'); " onmouseout="$('#<?php echo $r["id"];?>edit').css('visibility','hidden');$('#<?php echo $r["id"];?>edit').css('display','none'); ">
+         <table width="95%" class="bugreport <?php echo $cssclass; ?>" align="center" onmouseover="$('#<?php echo $r["id"];?>edit').css('visibility','visible');$('#<?php echo $r["id"];?>edit').css('display','block'); " onmouseout="$('#<?php echo $r["id"];?>edit').css('visibility','hidden');$('#<?php echo $r["id"];?>edit').css('display','none'); ">
          	<tr>
          		<td><div id="headings" style="float: left; "class="dark"><?php echo $r["title"];?></div>
          		<?php if( $this->user->adminCheck() ){ ?><div style="float: right; visibility: hidden; display: none;" id="<?php echo $r["id"];?>edit"><small class="small"><a href="?cmd=edit&parent=<?php echo $_GET["id"]; ?>&commentid=<?php echo $r["id"]; ?>">edit</a></small></div><?php } ?>

@@ -31,6 +31,8 @@
   					$verb = "closed"; $b = "<strike>"; $a = "</strike>";
   				}elseif($r['type']=='reopened')
   					$verb = "reopened";
+  				elseif($r['type']=='edit')
+  					$verb = 'edited';
   				elseif($r['type']=='git'){
   					$verb = "committed";
   					$title = $this->db->first("SELECT `message` FROM commits WHERE `id`='".$r['_id']."'");	
@@ -41,23 +43,30 @@
   				
   				
   			?>
-  			<?php 
+  			<table width="95%" align="center" cellspacing="0" cellpadding="0" class="tableup">
+  			  			<tr>
+  			<td><?php 
   				if(!in_array($date, $displayedDates))
-	  				echo "<div class='date'>".$date."</div>";
+	  				echo "<div class='date'><b>".$date."</b></div>";
 	  			else
 	  				echo "<div class='date'>".date('h:mA', $r['time'])."</div>";
 	
 	  			 $displayedDates[] = $date;
 
   			?>
-  			<div class='update'>
+			</td>
+			<td width="100%">
+  			<div class='update' width="100%">
   			
 			<?php echo $b; ?><a href='<?php echo $url; ?>'>"<?php echo $title; ?>"</a><?php echo $a; ?> was <?php echo $verb; ?> by 
-			<?php echo $user_s;?>.
+			<?php echo $user_s;?>.</div>
+			</td>
+			<td>
   			<div class='statustype' id='statustype'><?php echo $r['type']; ?></div>
-  			</div>
-  			<div style="clear: both;"></div>
-  			<?php } ?>
+			</td>  
+			</tr>
+			<?php } ?>
+			</table>
   		</td></tr></table>
   		<?php
   	}

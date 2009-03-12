@@ -4,7 +4,10 @@ defined('__bbug') or die();
 include('integration/fsock.php');
 include('integration/xml.php');
 
-$id = (int) $_GET['commit'];
+$id = $_GET['commit'];
+if(!is_numeric($id))
+	$id = $sum = $this->db->first("SELECT `id` FROM commits WHERE `sum`='$id'");
+	
 $project = $this->db->first("SELECT `project` FROM commits WHERE `id`='$id'");
 $sum = $this->db->first("SELECT `sum` FROM commits WHERE `id`='$id'");
 
