@@ -29,15 +29,21 @@ $post_results = parseHttpResponse($results);
 $objXML = new xml2Array();
 $arrOutput = $objXML->parse($post_results);
 
+echo "<pre>";
+	//print_r($arrOutput);
+echo "</pre>";
+
 $github_result = $arrOutput[0]['children'];
 
 for($i = 0; $i<count($github_result); $i++):
 
 	$commit_id = $github_result[$i]['children'][4]['tagData'];
 	$message = $github_result[$i]['children'][0]['tagData'];
+	$commiter = $github_result[$i]['children'][3]['children'][0]['tagData']."/".$github_result[$i]['children'][3]['children'][1]['tagData'];
 	$date = str_replace('T', ' T ', $github_result[$i]['children'][5]['tagData']);
-	echo "<a href='#' title=\".". $date . "\">" .$message . "</a><small>[" . $commit_id . "]</small>";
+	echo "<a href='#' onclick=\"insertAtCursor(document.reply.report, '[GIT]".$commit_id."[/GIT]');\" title=\".". $date . "\">" .$message . "</a><small>[" . $commit_id . "] by $commiter</small>";
 
 endfor;
 
 ?>
+<script type="text/javascript">$(function(){ $('#imgloader').hide(); });</script>

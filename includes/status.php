@@ -14,25 +14,46 @@
   		<td>
   			<h3>Status Updates</h3>
   			<?php
-  			$q = $this->db->query("SELECT * FROM status_ups ORDER BY `id` DESC LIMIT 10");
+  			$displayedDates = array();
+  			$q = $this->db->query("SELECT * FROM status_ups ORDER BY `time` DESC LIMIT 15");
   			while($r = mysql_fetch_array($q)){
   			$title = $this->db->first("SELECT `title` FROM list WHERE `id`='".$r['_id']."'");
   			$b = ""; # before ticket title
   			$a = ""; # after ticket title
   			
+  			$date = date('l M Y', $r['time']);
+  			$user_s = $this->user->uidToName($r["by"]);
+  			$url = "?cmd=view&id=".$r['_id'];
   				$verb = "created";
   				if($r['type']=='update')
   					$verb = "updated";
   				elseif($r['type']=='closed'){
   					$verb = "closed"; $b = "<strike>"; $a = "</strike>";
-  				}	
+  				}elseif($r['type']=='reopened')
+  					$verb = "reopened";
+  				elseif($r['type']=='git'){
+  					$verb = "committed";
+  					$title = $this->db->first("SELECT `message` FROM commits WHERE `id`='".$r['_id']."'");	
+  					$user_s = str_replace('@', '(at)',$this->db->first("SELECT `user` FROM commits WHERE `id`='".$r['_id']."'"));
+  					$url = "?commit=".$r['_id'];
+  				}
   				
   				
   				
   			?>
+  			<?php 
+  				if(!in_array($date, $displayedDates))
+	  				echo "<div class='date'>".$date."</div>";
+	  			else
+	  				echo "<div class='date'>".date('h:mA', $r['time'])."</div>";
+	
+	  			 $displayedDates[] = $date;
+
+  			?>
   			<div class='update'>
-			<?php echo $b; ?><a href='?cmd=view&id=<?php echo $r['_id']; ?>'>"<?php echo $title; ?>"</a><?php echo $a; ?> was <?php echo $verb; ?> by 
-			<?php echo $this->user->uidToName($r["by"]);?>.
+  			
+			<?php echo $b; ?><a href='<?php echo $url; ?>'>"<?php echo $title; ?>"</a><?php echo $a; ?> was <?php echo $verb; ?> by 
+			<?php echo $user_s;?>.
   			<div class='statustype' id='statustype'><?php echo $r['type']; ?></div>
   			</div>
   			<div style="clear: both;"></div>
@@ -41,8 +62,10 @@
   		<?php
   	}
   	
-  	function n($id, $by, $type, $project){ #new status
-  		$this->db->query_insert('status_ups', array('id' => 'null', '_id' => $id, 'by' => $by, 'type'=>$type, 'project' => $project, 'time' => time() ) );
+  	function n($id, $by, $type, $project, $time=null){ #new status
+  		if($time == null)
+  			$time = time();
+  		$this->db->query_insert('status_ups', array('id' => 'null', '_id' => $id, 'by' => $by, 'type'=>$type, 'project' => $project, 'time' => $time ) );
   	}
   	
   }

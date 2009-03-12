@@ -45,7 +45,10 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
 
         $(".statustype").corner('5px');
         $(".openticks").corner('5px');
+        $(".date").corner('5px');
+
         $("#status").corner();
+        $("#scm").corner();
         });
       </script>
         </head>
@@ -141,7 +144,9 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
     else
     	$cmd = "";
     
-    if($cmd == "submit")
+    if(isset($_GET['commit']))
+    	include('commits.php');
+    elseif($cmd == "submit")
         include('submit.php');
     elseif($cmd == "delete"){
      //check if its parent ticket
@@ -203,9 +208,10 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
  		?><br>
  		<h3>GitHub Commits</h3>
  		<script type="text/javascript">$(function(){
-					$('#github').load("/integration/github.php?url=<?php echo $proj_git;?>");
+					$('#github').load("/integration/github.php?url=<?php echo $proj_git;?>"); 
 				});
 		</script>
+		<img src='loader.gif' id='imgloader'>
  		<div id='github'></div>
  		<?php
    	}

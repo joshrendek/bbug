@@ -209,9 +209,14 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 #sidenav small { font-size: 50%; padding-left: 15px;}
 .openticks { padding-left: 10px; padding-right: 15px;  color: white; background-color: #5A9ECF; width: 40px; margin-right: 10px; }
 .openticks * { float: left; }
-#status { background-color: white; margin-top: 15px; } 
-#status h3 { font-size: 100%; }
+#status, #scm { background-color: white; margin-top: 15px; } 
+#status h3 { font-size: 100%; padding: 15px; }
 
+#scm h3 { font-size: 100%; padding: 15px; }
+#scm #file { font-size: 80%; padding: 10px; }
+#scm #diff { font-size: 70%; margin: 5px; padding: 10px; background-color: #efefef; }
+#scm #add { background-color: #ddffdd; margin: 5px; }
+#scm #remove { background-color: #ffdddd;  margin: 5px; }
 #github { overflow: auto; height: 350px; }
 
 .update { font-size: 90%; color: #888888; margin-left: 40px; border-bottom: 1px solid #dfdfdf; margin-right: 50px;  margin-top: 10px; margin-bottom: 4px; height: 20px; }
@@ -222,3 +227,5 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 
 #statustype { margin-top: -15px; float: right; background-color: #5A9ECF; width: 70px; color: white; font-size: 80%; text-align: center; text-transform: uppercase; }
 #statususer { color: #222222; }
+
+.date { background-color: #efefef; width: 75px; padding: 5px; margin: 5px;font-size: 70%; color: #666666; float: left; text-align: center; }

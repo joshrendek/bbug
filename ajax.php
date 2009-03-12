@@ -77,6 +77,8 @@ if(isset($_POST["openticket"]) && $isadmin == 1){
  $closeticket = $mydb->clean($_POST["tickid"], '', '');
  $mydb->query_update('list', array('status' => 1, 'finished' => ''), "id='$closeticket'");
  echo "Ticket Opened";   
+ $projectID = $mydb->first("SELECT `project` FROM list WHERE `id`='".$_POST['tickid']."'");
+ $s->n($_POST["tickid"], $_uid, 'reopened', $projectID);
 }
 if(isset($_POST["changepri"]) && $isadmin == 1){
  $changepri = $mydb->clean($_POST["changepri"], '', '');

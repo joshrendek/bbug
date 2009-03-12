@@ -244,7 +244,10 @@ class View extends Bugs {
     /* from php.net or something -- regex to convert text-links to html links */
     function make_clickable($text, $ce, $git)
     {
+       // remake the git url
        
+       $x = explode('/', $git);
+	   $user_proj = "http://github.com/".$x[3]."/".$x[4]."/commit";
         if (ereg("[\"|'][[:alpha:]]+://",$text) == false)
         {
             $text = ereg_replace('([[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/])', '<a target=\"_new\" href="\\1">\\1</a>', $text);
@@ -253,7 +256,7 @@ class View extends Bugs {
         					'#\[git\](.*?)\[/git\]#is');
         $replacements = array(
         			'<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', 
-        			'<a href="'.$git.'$1">\[GitHub: $1\]</a>'); 
+        			'<a href="'.$user_proj.'/$1" target="_blank">\[GitHub: $1\]</a>'); 
        // $text = preg_replace('#\[ce\](.*?)\[/ce\]#is', '<a href="'.$ce.'index.php?fuse=support&view=ViewTicketDetails&ticketID=$1" target="blank">\[CE-Ticket \#$1\]</a>', $text);
        $text = preg_replace($patterns, $replacements, $text);
         //'#\[wow\](.*?)\[/wow\]#is'
@@ -472,7 +475,7 @@ class View extends Bugs {
     function reply($bugid){
     
      ?>
-<form name="" method="POST" action="" enctype="multipart/form-data">
+<form name="reply" method="POST" action="" enctype="multipart/form-data">
 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 <table width="90%" cellspacing="2" align="center">
 <tr>
@@ -493,7 +496,7 @@ class View extends Bugs {
 				<td><label for="subject" >Comment</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="report" class="textarea"></textarea></td>
+				<td><textarea name="report" id='report' class="textarea"></textarea></td>
 			</tr>
 			<tr>
 				<td><label for="attachment">Attachment</label></td>
