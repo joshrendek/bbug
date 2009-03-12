@@ -12,7 +12,7 @@
    function Main($db){
     $this->db=$db; 
     $this->user = new User();
-    $this->s = new Status($db);      
+    $this->s = new Status($db, $this->user);      
    }
    
    function headStart(){
@@ -37,11 +37,15 @@
         <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
         <script type="text/javascript" src="js/jq-sort.js"></script> 
         <script type="text/javascript" src="js/init.js"></script> 
-
+		<script type="text/javascript" src="js/round.js"></script>
 
          
         <script>$(document).ready(function(){$('#ProjTab').hide();
 $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#ProjTab').hide();});
+
+        $(".statustype").corner('5px');
+        $(".openticks").corner('5px');
+        $("#status").corner();
         });
       </script>
         </head>
@@ -188,10 +192,24 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
   	 $tpr = $this->db->query("SELECT * FROM projects ORDER BY `name` ASC");
              while($r = mysql_fetch_array($tpr)){
              	$open = $this->db->first("SELECT count(*) FROM list WHERE `status`='1' AND `parent`='0' AND `project`='".$r['id']."';");
-                echo '<a href="?specialrefiner='.$r['id'].'"><span class="openticks" id="open'.$r['id'].'"> '.$open.' </span> '.$r['name'].'</a>';
+                echo '<a href="?specialrefiner='.$r['id'].'"><span class="openticks" id="open'.$r['id'].'">'.$open.' </span> '.$r['name'].'</a>';
                 ?>
                 <?php
              }
+  	if(isset($_GET['cmd']) && $_GET['cmd'] == 'view'){
+		$bugid = $this->db->clean($_GET['id'], '', '');
+		$projid = $this->db->first("SELECT `project` FROM list WHERE `id`='$bugid'");
+  		$proj_git = $this->db->first("SELECT `github` FROM projects WHERE `id`='".$projid."'");
+ 		?><br>
+ 		<h3>GitHub Commits</h3>
+ 		<script type="text/javascript">$(function(){
+					$('#github').load("/integration/github.php?url=<?php echo $proj_git;?>");
+				});
+		</script>
+ 		<div id='github'></div>
+ 		<?php
+   	}
+  
   }
   
    

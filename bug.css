@@ -18,7 +18,7 @@ h1, h2, h3 { margin:0; padding:0;}
 #bbtop { font-size: 10px; height: 71px; }
 #logo { font-size: 160%; color: white; padding: 10px;  } 
 #bbbot { background-color: #266A9B;  }
-#bbbot a { margin-left: 25px;   margin-top: 10px;  color: #e8e8e8; font-size: 11px; font-weight: bold; text-decoration: none; }
+#bbbot a { margin-left: 25px;   margin-top: -5px; margin-bottom: 5px; color: #e8e8e8; font-size: 90%; font-weight: bold; text-decoration: none; }
 #bbotnav { height: 35px; }
 #bbbot a:hover { color: #69B7DC; }
 #bbtop input { font-size: 11px; }
@@ -206,8 +206,19 @@ label { font-size: 12px; color: #555555;  font-weight: bold;   }
 #sidenav h3 { font-size: 90%; border-bottom: 1px solid #ababab; }
 #sidenav a { font-size: 80%; color: #555555; display: block;  padding-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 250px; }
 #sidenav a:hover { background-color: #cdcdcd; text-decoration: none; }
-
-.openticks { padding-left: 10px; padding-right: 15px;  color: white; background-image: url(images/bluebutton.gif); background-repeat: no-repeat;  margin-right: 10px; }
-
+#sidenav small { font-size: 50%; padding-left: 15px;}
+.openticks { padding-left: 10px; padding-right: 15px;  color: white; background-color: #5A9ECF; width: 40px; margin-right: 10px; }
+.openticks * { float: left; }
 #status { background-color: white; margin-top: 15px; } 
 #status h3 { font-size: 100%; }
+
+#github { overflow: auto; height: 350px; }
+
+.update { font-size: 90%; color: #888888; margin-left: 40px; border-bottom: 1px solid #dfdfdf; margin-right: 50px;  margin-top: 10px; margin-bottom: 4px; height: 20px; }
+
+.update #statustext { float: right; }
+.update a { color: #5A9ECF; }
+.update a:hover { color: #266A9B; text-decoration: none;}
+
+#statustype { margin-top: -15px; float: right; background-color: #5A9ECF; width: 70px; color: white; font-size: 80%; text-align: center; text-transform: uppercase; }
+#statususer { color: #222222; }

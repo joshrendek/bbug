@@ -52,9 +52,10 @@
         'type' => $type, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '', 'attachment' => $target.$file_name);
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Report submitted.</h3></center>");
-  $LASTID = $this->db->lastID();
-
-  $this->s->n("<a href='?cmd=view&id=$LASTID'>\"{$_POST['subject']}\"</a> was created by ");
+  $LASTID = $this->db->lastID();  
+   if($type == 0) $type =  "bug";
+    if($type == 1) $type = "feature";
+  $this->s->n($LASTID, $reportedby, $type, $_POST['project']);
   //echo $lastID;
   // send emails to administrators
   $this->db->query("SELECT * FROM users WHERE `acl`='0'");
@@ -125,6 +126,7 @@
 			<tr>
 				<td><input type="file" name="attachment" /></td>
 			</tr>
+			
 			<tr>
 				<td>Shortcuts: <br>
 				<b>[CE]ID[/CE]:</b> Link to this project's ClientExec.<br>

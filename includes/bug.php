@@ -470,6 +470,7 @@ class View extends Bugs {
     }
     
     function reply($bugid){
+    
      ?>
 <form name="" method="POST" action="" enctype="multipart/form-data">
 <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
@@ -509,8 +510,7 @@ class View extends Bugs {
 	</td>
 	</tr>
 	</table>
-</td></tr>
-</table>
+
 </form>
               
     <?php
@@ -556,7 +556,7 @@ class View extends Bugs {
             <td align="center" style="background-image: url('<?php echo BBPATH; ?>/images/bar.gif'); background-position: -<?php echo $backgroundpos;?>px 0px; background-repeat: no-repeat; color: black;">
             <?php echo $finished;?>/<?php echo $unfinished;?>
             </td>
-        <tr>
+        </tr>
         </table> 
      </div>
      <div style="padding-top: 20px;"></div>

@@ -3,18 +3,19 @@
 include('includes/main.php');
 include('config.php');
 include('includes/db.php');
-
+include('includes/status.php');
 include('includes/bug.php');
 include('includes/user.php');
 $mydb = new Database($db['host'], $db['user'], $db['pass'], $db['db'], '', 20);
    $mydb->NewConnection();
 $main = new Main($mydb);
 $user = new User();
+$s = new Status($mydb, $user);
 //print_r($_POST);
 // test
 $userName = $_POST["username"];
 $passWord = $_POST["password"];
-               
+$_uid = $mydb->first("SELECT `id` FROM `users` WHERE `username`='$userName'");         
                 $adminCheck = $mydb->first("SELECT `acl` FROM `users` WHERE `username`='$userName' AND `password`='".md5($passWord)."';");
                 if($adminCheck === "0")
                     $isadmin = 1;
@@ -53,6 +54,10 @@ if(isset($_POST["closeticket"]) && $isadmin == 1){
  $closeticket = $mydb->clean($_POST["tickid"], '', '');
  $mydb->query_update('list', array('status' => 0, 'finished' => time() ), "id='$closeticket'");
  echo "Ticket Closed";   
+ 
+ $projectID = $mydb->first("SELECT `project` FROM list WHERE `id`='".$_POST['tickid']."'");
+ $s->n($_POST["tickid"], $_uid, 'closed', $projectID);
+
  
  // send emails to author
       $authorID = $mydb->clean($_POST["by"], '', '');

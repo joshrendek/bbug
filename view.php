@@ -45,7 +45,8 @@ if(isset($_POST["submitReport"])){
         'type' => 0, 'started' => time(), 'finished' => '', 'due' => '', 'assigned' => '', 'attachment' => $target.$file_name);
                 $this->db->query_insert('list', $bugData);
                 $this->message("<center><h3>Reply added.</h3></center>");
-  
+    $this->s->n($bugid, $reportedby, 'update', $this->db->first("SELECT `project` FROM list WHERE `id`='$bugid'", 0, 0));
+
   }
 ?>  
 <?php 
