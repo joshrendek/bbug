@@ -65,9 +65,10 @@
   			<div class='statustype' id='statustype'><?php echo $r['type']; ?></div>
 			</td>  
 			</tr>
-			<?php } ?>
 			</table>
-  		</td></tr></table></table>
+			<?php } ?>
+			
+  		</td></tr></table>
   		<?php
   	}
   	
