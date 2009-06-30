@@ -113,6 +113,7 @@ echo "<b>ToDo_main table created....</b><br/>";
 
 $todoLSQL = " CREATE TABLE `todo_list` (
 `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+`tid` INT( 11 ) NOT NULL ,
 `content` TEXT NOT NULL ,
 `status` INT( 2 ) NOT NULL ,
 INDEX ( `id` )
