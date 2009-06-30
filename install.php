@@ -121,6 +121,32 @@ $mydb->query($todoLSQL);
 if(strlen($mydb->errorno) == 0)
 echo "<b>ToDo_List table created....</b><br/>";
 
+$commitsSQL = " CREATE TABLE `commits` (
+  `id` int(11) NOT NULL auto_increment,
+  `user` varchar(255) default NULL,
+  `message` varchar(255) default NULL,
+  `sum` varchar(255) default NULL,
+  `project` int(11) default NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;";
+$mydb->query($commitsSQL);
+if(strlen($mydb->errorno) == 0)
+echo "<b>Commits table created....</b><br/>";
+
+$statusSQL = " CREATE TABLE `status_ups` (
+  `id` int(11) NOT NULL auto_increment,
+  `_id` int(11) default NULL,
+  `by` int(11) default NULL,
+  `type` varchar(50) default NULL,
+  `project` int(11) default NULL,
+  `time` int(11) default NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;";
+$mydb->query($statusSQL);
+if(strlen($mydb->errorno) == 0)
+echo "<b>StatusUps table created....</b><br/>";
+
+
 $projModSQL = "ALTER TABLE `projects` ADD `client_exec` VARCHAR( 255 ) NOT NULL ;";
 $mydb->query($projModSQL);
 $mydb->query("ALTER TABLE `projects` ADD `github` VARCHAR( 255 ) NOT NULL ;");
