@@ -146,7 +146,7 @@ a.paginator, a.paginator:visited { color: #222222; margin: 3px; padding-left: 5p
 a.paginator:hover { border-bottom: 2px solid #00324a; color: #69b7dc; }
 .quick { width: 150px; font-size: 10px; color: #333333; border: 1px solid #00324a; }
 .quicksel { font-size: 10px; color: #333333; border: 1px solid #00324a; }
-.installer, .register { width: 150px; font-size: 10px; color: #333333; border: 1px solid #00324a;  }
+.installer, .register { width: 150px; font-size: 10px; color: #333333; border: 1px solid #00324a !important;  }
 .copyright, .copyright a { color: #222222; }
 
 #submitForm {  }
