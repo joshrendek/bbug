@@ -3,6 +3,7 @@ define('__bbug', 1);
   // installer
   include('config.php');
   include('includes/db.php');
+  include('includes/status.php');
   include('includes/main.php');
   include('includes/user.php');
   $mydb = new Database($db['host'], $db['user'], $db['pass'], $db[db], '', 20);
@@ -13,7 +14,7 @@ define('__bbug', 1);
         <head> 
         <title>BlueBug - Tracking Software</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link type="text/css" href="/bug.css" rel="stylesheet">
+        <link type="text/css" href="bug.css" rel="stylesheet">
         <!--[if lt IE 8.]>
         <style type="text/css">
         #cLeft { margin-left: -5px; }
@@ -23,12 +24,12 @@ define('__bbug', 1);
         <![endif]-->
 
     <!--[if lt IE 7.]>
-    <script defer type="text/javascript" src="/js/pngfix.js"></script>
+    <script defer type="text/javascript" src="js/pngfix.js"></script>
     <![endif]-->                
 
-        <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-        <script type="text/javascript" src="/js/jquery.wysiwyg.pack.js"></script>
-         <script type="text/javascript" src="/js/jq-sort.js"></script> 
+        <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+        <script type="text/javascript" src="js/jquery.wysiwyg.pack.js"></script>
+         <script type="text/javascript" src="js/jq-sort.js"></script> 
          
 
         </head>
@@ -37,8 +38,8 @@ define('__bbug', 1);
 <div class="clear"></div>
     <div align="center">
         <div id="topContent" width="90%">
-            <img src="/images/index_09.gif" id="cLeft" />
-            <img src="/images/index_11.gif" id="cRight" />        
+            <img src="images/index_09.gif" id="cLeft" />
+            <img src="images/index_11.gif" id="cRight" />        
         </div>
         
         <div id="contentArea" width="91%">
@@ -160,8 +161,8 @@ $mydb->query("ALTER TABLE `list` ADD `attachment` VARCHAR( 100 ) NOT NULL ;");
         
         
         <div id="bottomContent" width="90%">
-            <img src="/images/index_15.gif" id="cLeft"  />
-            <img src="/images/index_18.gif" id="cRight"  />        
+            <img src="images/index_15.gif" id="cLeft"  />
+            <img src="images/index_18.gif" id="cRight"  />        
         </div>
         
     </div>
