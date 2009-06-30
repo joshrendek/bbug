@@ -141,7 +141,7 @@ $mydb->query("ALTER TABLE `list` ADD `attachment` VARCHAR( 100 ) NOT NULL ;");
             </tr>
             <tr>
             <td>Admin Password:</td>
-            <td><input name="password" class="installer"></td>
+            <td><input type="password" name="password" class="installer"></td>
             </tr>
             <tr>
             <td>Admin Email:</td>
