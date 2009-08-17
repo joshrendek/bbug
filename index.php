@@ -2,6 +2,9 @@
 session_start();
 define('__bbug', 1);
 
+# set default timezone for PHP 5.3
+date_default_timezone_set('America/New_York');
+
 include('includes/main.php');
 include('config.php');
 include('includes/db.php');
