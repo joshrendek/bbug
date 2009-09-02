@@ -150,11 +150,11 @@ class Database {
           <table width="50%" align="center" cellspacing="2" style='border: 1px dashed #efefef; background-color: #FFFFFF; color: #000000; font-size: 12px;' cellpadding="2">
           <tr>
                <td><b>Error message:</b></td>
-               <td><? echo $str;?></td>
+               <td><?php echo $str;?></td>
           </tr>
           <tr>
                <td><b>MySQL Error (#<? echo $this->errorno;?>):</b></td>
-               <td><? echo $this->errordesc;?></td>
+               <td><?php echo $this->errordesc; ?></td>
           </tr>
           </table>
         <?php
