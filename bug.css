@@ -81,7 +81,7 @@ h1, h2, h3 { margin:0; padding:0;}
 /* Admin Controls */
 #adminContainer { margin-left: 200px; margin-right: 65px; background: #ffffff; height: inherit; }
 #adminLeft { margin-left: 10px; border-right: 1px dashed #CDCDCD;  }
-#adminLeft a { display: block; color: #00324a; font-size: 11px; text-align: left; font-weight: bold;
+#adminLeft a { display: block; color: #00324a; font-size: 14px; text-align: left; font-weight: bold;
  text-decoration: none; padding-left: 20px; }
 #adminLeft a:hover { text-decoration: underline; }
 #adminLeft h3 { margin: 0; padding-bottom: 5px; font-size: 12px; text-align: left; padding-left: 5px;}
