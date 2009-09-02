@@ -57,7 +57,7 @@ $("#ProjToggle").toggle(function () {$('#ProjTab').fadeIn();},function () {$('#P
         <table align="center" width="100%" cellspacing="0" cellpadding="0">
         	<tr id="bbhead">
         		<td><div id="logo">BlueBug</div></td>
-        		<td id="bbtop" width="100%"> <div style='float: right;padding-right: 30px;'><? echo $this->user->loginForm();?></div></td>
+        		<td id="bbtop" width="100%"> <div style='float: right;padding-right: 30px;'><?php echo $this->user->loginForm();?></div></td>
        		</tr>
        		<tr>
        			<td colspan="2">

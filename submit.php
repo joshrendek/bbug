@@ -118,7 +118,7 @@
 				<td><label for="project">Project</label></td>
 			</tr>
 			<tr>
-				<td><select name="project" class="select"><? echo $bugView->listProjects();?></select></td>
+				<td><select name="project" class="select"><?php echo $bugView->listProjects();?></select></td>
 			</tr>
 			<tr>
 				<td><label for="attachment">Attachment</label></td>
@@ -148,5 +148,5 @@
 
 </table>
 
-</form><?php  ?>
+</form>
 <?php }else { echo "The administrator has required registration to submit bugs."; } ?>

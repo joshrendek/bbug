@@ -153,7 +153,7 @@ class Database {
                <td><?php echo $str;?></td>
           </tr>
           <tr>
-               <td><b>MySQL Error (#<? echo $this->errorno;?>):</b></td>
+               <td><b>MySQL Error (#<?php echo $this->errorno;?>):</b></td>
                <td><?php echo $this->errordesc; ?></td>
           </tr>
           </table>

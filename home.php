@@ -5,5 +5,4 @@
 
 <?php 
 $this->s->display();
-//$list->quickadd();
 ?>

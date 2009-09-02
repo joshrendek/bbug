@@ -46,10 +46,10 @@
                 while($r = $this->db->fetch_array()){
                  ?>
                    <tr>
-                        <td><? echo $r["id"];?></td>
-                        <td><? echo $r["username"];?></td>
-                        <td><? echo $r["email"];?></td>
-                        <td><a href="?admin&adm=listusers&delete=<? echo $r["id"];?>">Delete</a></td>
+                        <td><?php echo $r["id"];?></td>
+                        <td><?php echo $r["username"];?></td>
+                        <td><?php echo $r["email"];?></td>
+                        <td><a href="?admin&adm=listusers&delete=<?php echo $r["id"];?>">Delete</a></td>
                       </tr>
                  <?php   
                 }
@@ -101,7 +101,7 @@
        <td><b>Version</b></td>
        <td><b>Options</b></td>
        </tr>
-       <?
+       <?php
        if(isset($_GET["delete"])){
         $delid = (int)$_GET["delete"];
         $this->db->del("projects", "id='$delid'", 1);
