@@ -37,10 +37,6 @@ define('__bbug', 1);
        
 <div class="clear"></div>
     <div align="center">
-        <div id="topContent" width="90%">
-            <img src="images/index_09.gif" id="cLeft" />
-            <img src="images/index_11.gif" id="cRight" />        
-        </div>
         
         <div id="contentArea" width="91%">
         <h1>Installing BlueBug...</h1>
@@ -186,11 +182,6 @@ $mydb->query("ALTER TABLE `list` ADD `attachment` VARCHAR( 100 ) NOT NULL ;");
         
         
         
-        
-        <div id="bottomContent" width="90%">
-            <img src="images/index_15.gif" id="cLeft"  />
-            <img src="images/index_18.gif" id="cRight"  />        
-        </div>
         
     </div>
     
